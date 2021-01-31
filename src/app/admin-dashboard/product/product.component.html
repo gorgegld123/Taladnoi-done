@@ -1,0 +1,100 @@
+<!-- Page Heading -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Product Management</h1>
+
+    </div>
+    <div class="col-md-10">
+        <br>
+        <div class="card-body px-3 py-3">
+            <div class="row">
+                <div class="col-6 col-sm-6">
+                    <i class="fa fa-cube"></i>&nbsp;สินค้าทั้งหมด
+                </div>
+                <div class="col-6 col-sm-6 text-right">
+
+                    <a [routerLink]="['/auth/add_product']" routerLinkActive="router-link-active" class="btn btn-danger text-white" tabindex="-1" role="button" aria-disabled="true" data-toggle="modal" data-target="#addProductModal">
+                        <i class="fa fa-plus-square"></i>&nbsp;&nbsp;เพิ่มสินค้า</a>
+                </div>
+            </div>
+            <br>
+            <div class="table border table-responsive dataTable" width="100%" cellspacing="0" id="example">
+                <thead>
+                    <tr class="small text-white text-center bg-dark">
+                        <th class="font-weight-normal" width="10%">รูป</th>
+                        <th class="font-weight-normal">สินค้า</th>
+                        <th class="font-weight-normal" width="7%">พิเศษ</th>
+                        <th class="font-weight-normal" width="7%">ราคา</th>
+                        <th class="font-weight-normal" width="5%">สต๊อก</th>
+                        <th class="font-weight-normal" width="1%" colspan="2">จัดการสินค้า</th>
+                    </tr>
+                </thead>
+                <!-- | filter:userID:'shopID' -->
+                <tbody *ngFor="let p of product ">
+                    <tr>
+                        <td class="align-middle">
+                            <img src="http://ta-lad-noi.com/taladnoiapi/productImage/{{p.image}}" width="150px">
+                        </td>
+                        <td class="align-middle ">
+                            <a href="">
+                                <small class="text-black-50">{{p.cname}}&nbsp;|</small>
+                                <b> {{p.pname}}</b>
+                            </a>
+                        </td>
+                        <td class="align-middle text-center">
+                            <a class="font-weight-bold text-danger">
+                            </a>
+                        </td>
+
+                        <td class="align-middle text-center">
+                            <a class="font-weight-bold h6">{{p.price}}</a>.-
+                        </td>
+
+
+                        <td class="align-middle text-center">
+
+                            <span class="badge badge-success font-weight-normal">&nbsp;{{p.stock}}&nbsp;</span>
+
+                            <!-- <span class='badge badge-success small font-weight-normal'></span> -->
+                        </td>
+
+                        <td class="align-middle text-center">
+                            <div class="btn-group" role="group">
+                                <a href="#editProduct" class="btn btn-warning btn-xs text-white" data-toggle="modal" (click)="onEditModal(p)">
+                                    <i class="fas fa-pencil-alt"></i></a>
+                                &nbsp;
+
+                                <a href="" class="btn btn-danger btn-xs text-white" onclick="return confirm('ยืนยันการลบ');"><i class="fa fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Logout Modal-->
+<div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title" id="exampleModalLabel">เพิ่มสินค้า</span>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-danger" type="button" data-dismiss="modal">ยกเลิก</button>
+                <a class="btn bg-success text-white shadow" href="#" data-dismiss="modal">เพิ่มสินค้า</a>
+            </div>
+        </div>
+    </div>
+
+</div>

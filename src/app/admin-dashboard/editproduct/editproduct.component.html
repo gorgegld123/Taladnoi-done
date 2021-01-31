@@ -1,0 +1,67 @@
+<!-- Edit Modal HTML -->
+<div id="editProduct" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content" style="font-family: 'Kanit' ">
+            <form [noValidate]="false">
+                <div class="modal-header">
+                    <div class="col-9">
+                        <p class="textheader"><i class="fas fa-pencil-alt"></i> แก้ไขข้อมูลสินค้า
+                            <span class="badge badge-danger text-white">Edit Data</span>
+                        </p>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body" [formGroup]="validateFrom">
+                    <div class="row text-center text-lg-left">
+                        <div class="col-6" style="margin-bottom: 15px">
+                            <p style="margin-bottom: 0.5rem;"> รูปภาพสินค้า</p>
+                            <img class="img-fluid img-thumbnail" src="http://ta-lad-noi.com/taladnoiapi/productImage/{{model.image}}" alt="">
+                        </div>
+                        <div class="col-6" style="margin-bottom: 15px">
+                            <p style="margin-bottom: 0.5rem;">รูปที่แก้ไข</p>
+                            <img class="img-fluid img-thumbnail" [src]="url" alt="">
+                        </div>
+                    </div>
+
+                    <div class="upload-btn-wrapper">
+                        <button class="btn btn-dark" style="width: 100%;">เลือกรูปภาพ</button>
+                        <input type="file" class="custom-file-input" name="files" id="upload" (change)="onFileChanged($event)" value="Choose a file">
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label>ชื่อสินค้า</label>
+                        <input name="pname" id="pname" type="text" class="form-control" formControlName="pname" [(ngModel)]="model.pname" [ngClass]="{'is-invalid':validateFrom.get('pname').touched && validateFrom.get('pname').invalid}" required="">
+                        <div class="invalid-feedback">โปรดกรอกชื่อสินค้า</div>
+                    </div>
+                    <div class="form-group">
+                        <label style="width: 100%;">ประเภทสินค้า</label>
+                        <select nice-select id='cname' name='cname' formControlName="cname" [(ngModel)]="model.categories_id" style="width: 100%;" [ngClass]="{'is-invalid':validateFrom.get('cname').touched && validateFrom.get('cname').invalid}">
+              <option value="">-- โปรดเลือกประเภทสินค้า --</option>
+              <option *ngFor="let c of categoryList" value="{{c.id}}">
+                {{c.name}}
+              </option>
+            </select>
+                    </div>
+                    <div class="form-group">
+                        <label style="width: 100%; margin-top: 15px;">ราคา</label>
+                        <input name="price" type="text" class="form-control" formControlName="price" [(ngModel)]="model.price" [ngClass]="{'is-invalid':validateFrom.get('price').touched && validateFrom.get('price').invalid}" required="">
+                    </div>
+                    <div class="form-group">
+                        <label>จำนวนสต๊อก</label>
+                        <input name="stock" type="text" class="form-control" formControlName="stock" [(ngModel)]="model.stock" [ngClass]="{'is-invalid':validateFrom.get('stock').touched && validateFrom.get('stock').invalid}" required="">
+                    </div>
+                    <div class="form-group">
+                        <label>รายละเอียดสินค้า</label>
+                        <quill-editor [styles]="editorStyle" [modules]="config" formControlName="detail" [(ngModel)]="model.detail" [ngClass]="{'is-invalid':validateFrom.get('detail').touched && validateFrom.get('detail').invalid}" required="">
+                        </quill-editor>
+                        <div class="invalid-feedback">โปรดกรอกรายละเอียดสินค้า</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-info" (click)="onSubmit()" value="Save">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

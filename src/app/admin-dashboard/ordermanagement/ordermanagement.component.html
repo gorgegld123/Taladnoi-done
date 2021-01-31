@@ -1,0 +1,115 @@
+<div class="container-fluid">
+    <div class="col-lg-10 col-md-12 col-sm-12 ml-lg-5">
+        <div class="card-body border-bottom mb-5" style="border-radius: 5px">
+            <div class="row">
+                <div class="card-body col-lg-6 col-sm-12 py-3">
+                    <i class="fa fa-bars mr-3"></i>&nbsp;รายละเอียดออเดอร์
+                </div>
+                <div class="col-lg-6 d-sm-none">
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row py-1 mt-15 d-flex" style="margin-left:1px;">
+      <div class="col-1 ">
+      </div>
+      <div class="orderid col-2">
+        <span class="fs-subtitle text-gray-600">รหัสออเดอร์</span>
+      </div>
+      <div class="description col-4">
+        <span class="fs-subtitle text-gray-600">สถานที่จัดส่ง</span>
+      </div>
+      <div class="order-id col-1">
+        <span class="fs-subtitle text-gray-600">วันที่สั่งซื้อ</span>
+      </div>
+      <div class="order-id col-1">
+        <span class="fs-subtitle text-gray-600 d-block text-align-left mb-2">สถานะ</span>
+      </div>
+      <div class="col-3"></div>
+    </div> -->
+
+
+        <div clas="row" *ngFor="let item of orderList;">
+            <div class="order-card mb-3 py-1 pointerCursor " *ngIf="item.product != null" (click)="panelExpended = !panelExpended">
+                <div class="course-preview col-lg-1 col-md-1 col-xs-2 ">
+                    <i class="fas fa-list"></i>
+                </div>
+                <div class="orderid col-xs-6 col-lg-1 col-md-2">
+                    <span><b>#{{item.orderNo}}</b></span>
+                </div>
+                <div class="description col-lg-4 d-none d-lg-block">
+                    <span><b>45/362 Thetree Privata , </b></span>
+                    <span class="fs-subtitle">แขวงบางซื่อ เขตบางซื่อ กรุงเทพฯ 10800</span>
+                </div>
+                <div class="orderid col-lg-2 col-md-3 d-lg-block d-md-block d-none">
+                    <span class="fs-subtitle">{{item.orderdate | date:'medium' }}</span>
+                </div>
+                <div class="orderid col-lg-1 col-md-2 d-lg-block d-md-block d-none">
+                    <span class="badge" [ngClass]="{ 'badge-danger': item.orderStatus === 'รอชำระ', 'badge-warning' : item.orderStatus === 'รอจัดส่ง', 'badge-success': item.orderStatus === 'จัดส่งแล้ว' 
+            ,'badge-info': item.orderStatus === 'ชำระเงินแล้ว'}"> {{item.orderStatus | uppercase}}</span>
+                    <!-- 
+            <span *ngIf="item.orderStatus === 'pending'" class="badge badge-secondary">{{item.orderStatus | uppercase}}</span>
+            <span *ngIf="item.orderStatus === 'payments'" class="badge badge-info">{{item.orderStatus | uppercase}}</span>
+            <span *ngIf="item.orderStatus === 'delivery'" class="badge badge-success">{{item.orderStatus | uppercase}}</span> -->
+                </div>
+                <div class="orderid col-lg-3 col-md-3 d-lg-block d-none">
+                    <span class="fs-subtitle">
+            {{item.firstname}} {{item.lastname}}</span>
+                </div>
+            </div>
+            <div class="row" [hidden]="panelExpended" *ngIf="item.product != null">
+                <div class="col-12">
+                    <div class="order-detail mb-3 py-1">
+                        <div class="col-lg-6">
+                            <div class="py-3 text-center">
+                                <span class="text-gray-600">รายละเอียดออเดอร์ #{{item.orderNo}}</span>
+                            </div>
+                            <!-- Shopping cart table -->
+                            <table class="table bg-white rounded shadow-sm mb-2">
+                                <thead>
+                                    <tr class="border-bottom">
+                                        <th scope="col" class="border-0 bg-white">
+                                            <div class="fs-subtitle ml-3">รายการสินค้า</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-white">
+                                            <div class="fs-subtitle">จำนวน</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-white">
+                                            <div class="fs-subtitle">ราคา</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-white">
+                                            <div class="fs-subtitle"></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let p of item.product ">
+                                        <th class="border-0 align-middle"><span class="fs-subtitle ml-3">{{p.productsName}}</span></th>
+                                        <th class="border-0 align-middle"><span class="fs-subtitle">{{p.quantity}}</span></th>
+                                        <th class="border-0 align-middle"><span class="fs-subtitle">{{p.total | currency:"THB"}}</span></th>
+                                        <th class="border-0 align-middle"><span class="fs-subtitle">แก้ไข</span></th>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <span class="fs-subtitle ml-3" *ngIf="item.product != null">ยอดรวม : <p class="fs-subtitle text-danger d-inline-block" >
+                             {{getTotal(item.product) | currency:'THB'}}
+                          </p></span>
+                                            <button href="#orderDetail" data-toggle="modal" (click)="onEditModal(item)" class="btn float-right m-auto">แจ้งปรับสถานะการชำระเงิน</button>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="col-lg-4">
+
+                            </div>
+                            <!-- End -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-order-detail></app-order-detail>
+
+</div>

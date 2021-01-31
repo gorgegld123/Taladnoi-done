@@ -1,0 +1,58 @@
+<div class="container mt-3" style="font-family: 'Kanit', sans-serif;">
+    <div class="row">
+        <div class="title mb-20 text-left col-12">
+            รายการสินค้า
+        </div>
+        <div class="col-6 mt-1 mb-10" style="font-family: Kanit;">
+            <div class="searchbox animated fadeInUp">
+                <input type="text" [(ngModel)]="searchFilters" placeholder="ค้นหา" id="search" name="search" class="search"><i class="fas fa-search"></i>
+            </div>
+        </div>
+
+        <div class="col-6 justify-content-between results animated zoomIn text-right mt-1">
+            <span>ประเภทสินค้า: </span>
+            <select [(ngModel)]='categoryFilters' class="dropdown sort-select">
+              <option value="" >ทั้งหมด</option>
+              <option *ngFor="let c of categorie$" value="{{c.name}}" >{{c.name}}</option>
+        
+          </select>
+
+            <!-- <button class="btn btn-danger" (click)="onSortPrice()">Sort</button> -->
+        </div>
+        <!-- <div class="col-lg-3 col-md-6 offset-md-0 offset-sm-1 col-sm-10 offset-sm-1 my-lg-0 my-2 animated fadeInUp" *ngFor ="let p of productFilter" >
+          <div class="card mb-50"> <img class="card-img-top" src="http://localhost/taladnoi/upload/product/{{p.image}}">
+              <div class="card-body">
+                  <div class="d-flex align-items-start justify-content-between">
+                      <div class="d-flex flex-column" >
+                          <span class="h6 font-weight-bold">{{p.pname}}</span>
+                          <span class="text-muted">{{p.price | currency:'THB'}}</span>
+                      </div>
+                      <div class="btn" (click)="addToCart(p)"><span class="fas fa-shopping-cart"></span></div>
+                  </div>
+              </div>
+          </div>
+      </div> -->
+
+        <p></p>
+
+        <div class="col-lg-3 col-md-6 offset-md-0 offset-sm-1 col-sm-10 offset-sm-1 my-lg-0 my-2 animated fadeInUp" *ngFor="let p of productFilter |filter:categoryFilters:'cname'">
+            <div class="card mb-50">
+                <a href="#product-detail" data-toggle="modal">
+                    <img class="card-img-top" src="http://ta-lad-noi.com/taladnoiapi/productImage/{{p.image}}" (click)="viewDetail(p)"></a>
+                <div class="card-body">
+                    <div class="d-flex align-items-start justify-content-between">
+                        <div class="d-flex flex-column">
+                            <span class="h6 font-weight-bold">{{p.pname}}</span>
+                            <span class="text-muted">{{p.price | currency:'THB'}}</span>
+                        </div>
+                        <div class="btn" (click)="addToCart(p)"><span class="fas fa-shopping-cart"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-product-detail></app-product-detail>
+
+<!-- https://bbbootstrap.com/snippets/bootstrap-custom-design-order-tracking-page-45067540 -->

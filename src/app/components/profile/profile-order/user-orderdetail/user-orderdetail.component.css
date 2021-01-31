@@ -1,0 +1,149 @@
+.fs-title {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #E1E8EE;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 0px;
+}
+
+.box {
+    border-radius: 3px;
+    padding: 30px 50px;
+}
+
+svg {
+    transition: transform 500ms cubic-bezier(.85, -0.48, .26, .67);
+}
+
+.cal {
+    /* //box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.1); */
+    border-radius: 100%;
+    margin-left: 5px;
+    position: absolute;
+    cursor: pointer;
+    font-size: 14px;
+    color: #e01527b0;
+}
+
+button:focus i {
+    animation: rotate 1s ease-in-out 0s;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.avatar-preview {
+    width: 80%;
+    height: 80%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.input-container {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.input-container label {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    transition: all 0.5s ease-in-out;
+}
+
+input:required:invalid::-webkit-datetime-edit {
+    color: transparent;
+}
+
+.input-container input {
+    border: 0;
+    border-bottom: 1px solid #555;
+    background: transparent;
+    width: 100%;
+    padding: 8px 0 5px 0;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+}
+
+.input-container input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #e74c3c;
+}
+
+.input-container input:focus~label,
+.input-container input:valid~label {
+    top: -12px;
+    font-size: 12px;
+}
+
+.selectdiv {
+    position: absolute;
+    /*Don't really need this just for demo styling*/
+    float: left;
+    min-width: 150px;
+}
+
+
+/* IE11 hide native button (thanks Matt!) */
+
+select::-ms-expand {
+    display: none;
+}
+
+.selectdiv:after {
+    content: '<>';
+    font: 17px "Consolas", monospace;
+    color: #333;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    right: 9px;
+    /*Adjust for position however you want*/
+    top: 9px;
+    padding: 0 0 2px;
+    border-bottom: 1px solid #999;
+    /*left line */
+    position: absolute;
+    pointer-events: none;
+}
+
+.selectdiv select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Add some styling */
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    height: 30px;
+    float: left;
+    margin: 5px 0px;
+    padding: 0px 24px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: #333;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    -ms-word-break: normal;
+    word-break: normal;
+}

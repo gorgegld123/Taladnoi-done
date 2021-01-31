@@ -1,0 +1,48 @@
+<!-- Edit Modal HTML -->
+<div id="editCategory" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content" style="font-family: 'Kanit' ">
+            <form [noValidate]="false">
+                <div class="modal-header">
+                    <div class="col-9">
+                        <p class="textheader"><i class="fas fa-pencil-alt"></i> แก้ไขข้อมูลประเภทสินค้า
+                            <span class="badge badge-danger text-white">Edit Data</span>
+                        </p>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body" [formGroup]="validateFrom">
+                    <div class="form-group">
+                        <label>ประเภทสินค้า</label>
+                        <input name="categoryName" id="categoryName" type="text" class="form-control"
+                            formControlName="categoryName" [(ngModel)]="catModel.categoryName" disabled
+                            [ngClass]="{'is-invalid':validateFrom.get('categoryName').touched && validateFrom.get('categoryName').invalid}"
+                            required="">
+                        <div class="invalid-feedback">โปรดกรอกชื่อสินค้า</div>
+                    </div>
+                    <div class="form-group">
+                        <label>รหัสประเภท</label>
+                        <input name="categoryCodename" id="categoryCodename" type="text" class="form-control" 
+                        formControlName="categoryCodename" [(ngModel)]="catModel.categoryCodename" 
+                        style="width:30%">
+                        <div class="invalid-feedback">โปรดกรอกรหัสประเภทสินค้า</div>
+                    </div>
+                    <div class="form-group">
+                        <label>ประเภทสินค้า</label>
+                        <input name="cname" id="cname" type="text" class="form-control" 
+                        formControlName="cname" [(ngModel)]="catModel.cname"
+                        [ngClass]="{'is-invalid':validateFrom.get('cname').touched && validateFrom.get('cname').invalid}"
+                        required=""style="width:100%">
+                        <div class="invalid-feedback">โปรดกรอกข้อมูล</div>
+                    </div>
+                   
+                </div><br>
+
+            </form>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <input type="submit" class="btn btn-info" value="Save" (click)="onSubmit()">
+            </div>
+        </div>
+    </div>
+</div>

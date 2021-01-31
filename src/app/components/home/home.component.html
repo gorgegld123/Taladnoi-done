@@ -1,0 +1,172 @@
+<!-- slider Area Start -->
+
+<!-- <ngx-slick-carousel class="banner-area" [config]="slideConfig2">
+    <div ngxSlickItem *ngFor="let slide of slides" class="single-banner">
+        <div class="banner-img">
+            <div class="single-img">
+                <img src="{{slide.img}}" alt="slide">
+            </div>
+        </div>
+        <div class="banner-overlay">
+        </div>
+        <div class="banner-text">
+            <span>Taladnoi
+                Community</span>
+            <h1 class="title"> Taladnoi Market </h1>
+            <h1 class="subtitle">ผลิตภัณฑ์ อาหาร ของใช้ งานศิลปะท้องถิ่น เครื่องปั้นดินเผา เครื่องประดับ</h1>
+        </div>
+    </div>
+
+</ngx-slick-carousel > -->
+<ngx-slick-carousel class="carousel" [config]="slideConfig2">
+    <div ngxSlickItem *ngFor="let slide of slides">
+        <div class="img-area">
+            <div class="img-slide" style="z-index: -1;">
+                <div class="single-img d-none d-lg-block">
+                    <img src="{{slide.img}}" alt="">
+                </div>
+                <div class="banner-text" style="z-index: 3;">
+                    <span>TaladnoiCommunity</span>
+                    <h1 class="title"> Taladnoi Market </h1>
+                    <h1 class="subtitle">ผลิตภัณฑ์ อาหาร ของใช้ งานศิลปะท้องถิ่น เครื่องปั้นดินเผา เครื่องประดับ</h1>
+                </div>
+                <div class="banner-overlay"></div>
+            </div>
+        </div>
+    </div>
+</ngx-slick-carousel>
+<!-- Mobile Menu -->
+
+
+<div id="myCarousel" class="carousel slide carousel-fade mt-50" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="mask flex-center">
+                <div class="container">
+                    <div class="row align-items-center mt-3">
+                        <div class="col-md-7 col-12 order-md-1 order-2">
+                            <h4>“ร้านเฮงเสง”<br></h4>
+                            <h3>จากกิจการครอบครัว สู่แบรนด์หมอนในไอคอนสยาม </h3>
+                            <p> ร้านหมอนแฮนด์เมดที่อยู่มา 100 ปี หนึ่งเดียวและเจ้าสุดท้ายของตลาดน้อย ที่ลูกหลานของนายอั๊วะ เอี้ยวฮุย ช่วยกันสานต่อ ทักษะการเย็บผ้า เย็บเบาะรองนั่ง และหมอน
+                            </p>
+                            <a (click)="anchorShoplist()" style="cursor: pointer; margin-top:50px;">เลือกซื้อสินค้า </a>
+                        </div>
+                        <div class="col-md-5 col-12 order-md-2 order-1">
+                            <img src="https://readthecloud.co/wp-content/uploads/2020/06/heng-seng-15-750x500.jpg" class="img-thumbnail d-none d-lg-block" alt="slide">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="mask flex-center">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-7 col-12 order-md-1 order-2">
+                            <h4>กะหรี่ปั๊ป​ คุณปุ๊​<br></h4>
+                            <p>เป็นร้านกะหรี่ปั๊ปที่มีอายุมากว่า​ 14ปี มีเคล็ดลับ​ การทอด​และการปรุงที่ไม่เหมือนใคร จนทำให้ผู้คนต่างติดปากมาจนถึงทุกวันนี้.
+                            </p>
+                            <a (click)="anchorShoplist()" style="cursor: pointer; margin-top:50px;">เลือกซื้อสินค้า</a>
+                        </div>
+                        <div class="col-md-5 col-12 order-md-2 order-1"><img src="https://c1.staticflickr.com/4/3670/33433875505_09286005f8_o.jpg" class="img-thumbnail d-none d-lg-block" alt="slide"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="carousel-item">
+            <div class="mask flex-center">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-7 col-12 order-md-1 order-2">
+                            <h4>Present your <br> awesome product</h4>
+                            <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br> necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
+                            <a href="#">เลือกซื้อสินค้า</a> </div>
+                        <div class="col-md-5 col-12 order-md-2 order-1"><img src="https://i.imgur.com/DGkR4OQ.png" class="mx-auto" alt="slide"></div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+</div>
+
+
+
+
+<section id="banner" class="d-block">
+    <div class="ourshop">
+        <!-- <i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i> -->
+        <h4>ร้านค้าของเรา</h4>
+        <!-- <h4>Our Shop</h4> -->
+        <hr>
+    </div>
+
+    <div class="container-fluid pt-4 pb-4" style="font-family: Kanit;">
+        <!-- <span class="icon-small">
+      <i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>
+      <h5 class="icon" style="color: black;">&nbsp;ร้านค้าของเรา</h5>
+    </span> -->
+        <div class="row">
+            <div class="col-auto">
+                <ngx-slick-carousel class="carousel" [config]="slideConfig" (init)="slickInit($event)">
+                    <div ngxSlickItem *ngFor="let item of Shoplist" class="slide">
+                        <div class="el-wrapper" id="shoplist">
+                            <div class="box-up">
+                                <img class="img-fluid" src="http://ta-lad-noi.com/taladnoiapi/productImage/{{item.shop_imageID}}" alt="">
+                                <div class="img-info">
+                                    <div class="info-inner">
+                                        <span class="p-name">{{item.shop_name}}</span>
+                                        <span class="p-company">{{item.shop_detail}}</span>
+                                    </div>
+                                    <div class="a-size">ประเภทร้านค้า : <span class="size">อาหาร</span></div>
+                                </div>
+                            </div>
+
+                            <div class="box-down">
+                                <div class="h-bg">
+                                    <div class="h-bg-inner"></div>
+                                </div>
+                                <a [routerLink]="['/products/shop' , item.shopID]" routerLinkActive="router-link-active" class="cart">
+                                    <span class="price"><i class="fas fa-info-circle"></i></span>
+                                    <span class="add-to-cart">
+                                        <span class="txt">เลือกซื้อสินค้า</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </ngx-slick-carousel>
+            </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-lg-4 col-sm-12 col-md-6 col-xl-3 mb-1" *ngFor="let item of Shoplist">
+                <div class="el-wrapper" id="shoplist">
+                    <div class="box-up">
+                        <img class="img-fluid" src="http://localhost/taladnoiapi/productImage/{{item.shop_imageID}}" alt="">
+                        <div class="img-info">
+                            <div class="info-inner">
+                                <span class="p-name">{{item.shop_name}}</span>
+                                <span class="p-company">{{item.shop_detail}}</span>
+                            </div>
+                            <div class="a-size">ประเภทร้านค้า : <span class="size">อาหาร</span></div>
+                        </div>
+                    </div>
+
+                    <div class="box-down">
+                        <div class="h-bg">
+                            <div class="h-bg-inner"></div>
+                        </div>
+                        <a [routerLink]="['/products/shop' , item.shopID]" routerLinkActive="router-link-active" class="cart">
+                            <span class="price"><i class="fas fa-info-circle"></i></span>
+                            <span class="add-to-cart">
+                                <span class="txt">เลือกซื้อสินค้า</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</section>

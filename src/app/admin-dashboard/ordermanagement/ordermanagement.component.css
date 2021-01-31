@@ -1,0 +1,162 @@
+@import 'status-indicator';
+
+.order-card {
+    overflow: hidden;
+    height: auto;
+    border-radius: 10px;
+    display: flex;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+}
+
+.order-detail {
+    overflow: hidden;
+    height: auto;
+    border-radius: 10px;
+    display: flex;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+
+}
+
+.order-card:nth-child(3) {
+    border-top:  1px solid #E1E8EE;
+    border-bottom:  1px solid #E1E8EE;
+}
+
+.course-preview {
+    border:black;
+	color: #000000;
+    padding: 20px;
+    height: 100%;
+    width: 150px;
+    text-align: center;
+    border-right: 1px solid #E1E8EE;
+}
+.course-preview :hover{
+	color: #ff0000;
+}
+
+.fs-title {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #E1E8EE;
+    }
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 0px;
+}
+
+.orderid {
+    text-align: left;
+    margin: auto 0px auto 20px;
+}
+
+.description {
+    margin: auto;
+}
+    
+.description span:first-child {
+    margin-bottom: 5px;
+}
+.description span:last-child {
+    font-weight: 300;
+    margin-top: 8px;
+    color: #86939E;
+}
+    
+.quantity {
+    padding-top: 20px;
+    margin-right: 60px;
+}
+.quantity input {
+    -webkit-appearance: none;
+    border: none;
+    text-align: center;
+    width: 42px;
+    height: 40px;
+    font-size: 16px;
+    color: #43484D;
+    font-weight: 300;
+}
+
+.btn {
+    text-align: center;
+    font-size: 13px;
+    color: #43484D;
+    font-weight: 300;
+    transition: all .3s ease-in;
+    border-color: rgb(128, 252, 241);
+    border-radius: 23px;
+
+}
+
+.btn:focus {
+    
+    outline: none;
+    }
+.btn:hover {
+    background-color:rgb(128, 252, 241);
+    color:white;
+    transform: scale(1.1);
+    animation-name: flash_border;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: flash_border;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-name: flash_border;
+    -moz-animation-duration: 2s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+}
+
+.pointerCursor {
+    cursor: pointer;
+}
+    
+.quantity span {
+    display: block;
+    font-size: 14px;
+    color: #43484D;
+    font-weight: 400;
+}
+    
+.quantity span:first-child {
+    margin-bottom: 5px;
+}
+.quantity span:last-child {
+    font-weight: 300;
+    margin-top: 8px;
+    color: #86939E;
+}
+
+@media (max-width: 800px) {
+.orderid {
+        text-align: left;
+        margin: auto 0px auto 10px;
+    }
+}
+
+@media (max-width: 1400px) {
+    
+.orderid {
+    text-align: left;
+    margin: auto 0px auto 10px;
+}
+
+@media (max-width: 700px) {
+    .orderid {
+        text-align: left;
+        margin: auto 0px auto 10px;
+    }
+}
+
+}
+

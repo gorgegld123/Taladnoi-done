@@ -1,0 +1,35 @@
+<div class="col-lg-12 mx-auto top" style="font-family: 'Prompt', sans-serif; background-color: #ffffff;">
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <!-- Tabs Titles -->
+  
+        <!-- Icon -->
+        <div class="fadeIn first">
+          <!-- <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" /> -->
+          <h1>สมัครสมาชิก</h1>
+        </div>
+  
+        <!-- Login Form -->
+        <form name="form" class="formregister" [formGroup]="registerForm">
+          <div class="registext fadeIn third">ชื่อผู้ใช้</div><input type="text" id="username" class="fadeIn second" formControlName="username" name="username" placeholder="ชื่อผู้ใช้">
+          <div class="registext fadeIn third">รหัสผ่าน</div><input type="text" id="password" class="fadeIn third" formControlName="password" name="password" placeholder="รหัสผ่าน">
+          <div class="registext fadeIn third">ยืนยันรหัสผ่าน</div><input type="text" id="cpassword" class="fadeIn third" formControlName="cpassword" name="cpassword" placeholder="ยืนยันรหัสผ่าน">
+          <div class="registext fadeIn third">ชื่อจริง</div><input type="text" id="firstname" class="fadeIn second" formControlName="firstname" name="firstname" placeholder="ชื่อจริง">
+          <div class="registext fadeIn third">นามสกุล</div><input type="text" id="lastname" class="fadeIn third" formControlName="lastname" name="lastname" placeholder="นามสกุล">
+          <!-- <div class="registext fadeIn third">รหัสประจำตัว</div><input type="text" id="identification" class="fadeIn second" formControlName="identification" name="identification" placeholder="เลขบัตรประจำตัว">
+          <div class="registext fadeIn third">อีเมลล์</div><input type="text" id="email" class="fadeIn third" formControlName="email" name="email" placeholder="อีเมล">
+          <div class="registext fadeIn third">โทร</div><input type="text" id="phone" class="fadeIn second" formControlName="phone" name="phone" placeholder="เบอร์โทร">
+          <div class="registext fadeIn third">รหัวไปรษณี</div><input type="text" id="postcode" class="fadeIn second" formControlName="postcode" name="postcode" placeholder="รหัสไปรษณิย์">
+          <div class="registext fadeIn third">ที่อยู่</div><textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="address" name="address" placeholder="ที่อยู่"></textarea> -->
+          <br>
+          <button type="submit"  (click)="onSubmit()" value="register">ยืนยัน</button>
+        </form>
+  
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+          <a class="underlineHover" routerLink="/login">กลับสู่หน้าล็อคอิน</a>
+        </div>
+      </div>
+    </div>
+    </div>
+  

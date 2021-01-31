@@ -1,0 +1,66 @@
+<div id="main-content" class="bg-white border">
+    <div class="d-flex flex-column">
+        <div class="h5">Hello {{UserLogin.firstname}} {{UserLogin.lastname}}</div>
+        <div>Logged in as: {{UserLogin.username}}</div>
+    </div>
+    <div class="d-flex my-4 flex-wrap">
+        <div class="box me-4 mr-3 my-1 bg-light">
+            <div><i class="fas fa-shopping-cart mx-auto "></i></div>
+            <div class="d-flex align-items-center mt-2">
+                <div class="tag">Items in Cart</div>
+                <div class="ms-auto number"></div>
+            </div>
+        </div>
+        <div class="box me-4 mx-3 my-1 bg-light">
+            <i class="fas fa-heart mx-auto"></i>
+            <div class="d-flex align-items-center mt-2">
+                <div class="tag">Wishlist</div>
+                <div class="ms-auto number"></div>
+            </div>
+        </div>
+    </div>
+    <div class="text-uppercase">รายละเอียดการสั่งซื้อ</div>
+    <div *ngFor="let item of orderList">
+        <div class="order my-3 bg-light" *ngIf="item.product != null">
+            <div class="row mt-2">
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column justify-content-between order-summary">
+                        <div class="d-flex align-items-center">
+                            <div class="text-uppercase">รหัสออเดอร์ #{{item.orderNo}}</div>
+                        </div>
+                        <div class="fs-8">{{item.orderdate | date:'medium'}}</div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="d-sm-flex align-items-sm-start justify-content-sm-between">
+                        <div class="status">Status : <span class="mx-1"> {{item.orderStatus}}</span></div>
+                        <a href="#userOrderDetail" data-toggle="modal" (click)="onEditModal(item)">
+                            <div class="btn btn-primary text-uppercase">รายละเอียดออเดอร์</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12 hh-grayBox pt45 pb20">
+                    <div class="row justify-content-between">
+                        <div class="order-tracking" [ngClass]="{'completed': item.orderStatus === 'รอชำระ'}">
+                            <span class="is-complete"></span>
+                            <p>สั่งซื้อสำเร็จ<br></p>
+                        </div>
+                        <div class="order-tracking" [ngClass]="{'completed': item.orderStatus === 'ชำระเงินแล้ว'}">
+                            <span class="is-complete"></span>
+                            <p>ชำระเงิน<br></p>
+                        </div>
+                        <div class="order-tracking" [ngClass]="{'completed': item.orderStatus === 'รอจัดส่ง'}">
+                            <span class="is-complete"></span>
+                            <p>รอจัดส่ง<br></p>
+                        </div>
+                        <div class="order-tracking" [ngClass]="{'completed': item.orderStatus === 'จัดส่งแล้ว'}">
+                            <span class="is-complete"></span>
+                            <p>จัดส่งแล้ว<br></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-user-orderdetail></app-user-orderdetail>

@@ -1,0 +1,102 @@
+<!-- Edit Modal HTML -->
+<div id="orderDetail" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content" style="font-family: 'Kanit' ;">
+            <form [formGroup]="validateFrom" [noValidate]="false">
+                <div class="modal-header">
+                    <div class="col-9 mt-2">
+                        <p class="text-header mb-3"><i class="fas fa-pencil-alt"></i> แจ้งสถานะการชำระเงิน</p>
+                        <span class="fs-subtitle text-gray-600 d-inline-block">รหัสออเดอร์ #{{orderModel.orderNo}}</span>
+                        <span class="fs-subtitle text-gray-600 d-block">ชื่อลูกค้า {{orderModel.firstname}} {{orderModel.lastname}}</span>
+                        <span class="fs-subtitle text-gray-600 d-block">วันที่สั่งซื้อ {{orderModel.orderdate | date:'medium'}}</span>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!-- Shopping cart table -->
+                    <table class="table bg-white py-5 shadow-sm mb-2">
+                        <thead>
+                            <tr class="border-bottom">
+                                <th scope="col" class="border-0 bg-white">
+                                    <div class="fs-subtitle ml-3">รายการสินค้า</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-white">
+                                    <div class="fs-subtitle">จำนวน</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-white">
+                                    <div class="fs-subtitle">ราคารวม</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-white">
+                                    <div class="fs-subtitle"></div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let p of orderModel.product">
+                                <th class="border-0 align-middle"><span class="fs-subtitle ml-3">{{p.productsName}}</span></th>
+                                <th class="border-0 align-middle"><span class="fs-subtitle">{{p.quantity}} ชิ้น</span></th>
+                                <th class="border-0 align-middle"><span class="fs-subtitle">{{p.total | currency:"THB"}}</span></th>
+                                <th class="border-0 align-middle"><span class="fs-subtitle">แก้ไข</span></th>
+                            </tr>
+                            <td colspan="4">
+                                <span class="fs-subtitle ml-3">ยอดรวม : <p class="fs-subtitle text-danger d-inline-block"> {{productTotal | currency:"THB"}}</span>
+                                <button class="btn cal btn-sm float-right" type="button" (click)="getTotal(orderModel.product)">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </td>
+                        </tbody>
+                    </table>
+                    <!-- End Table -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="box col-lg-12">
+                                <!-- <span class="fs-title text-gray-600 d-block mb-3 ">แจ้งชำระเงิน รหัสออเดอร์ #{{orderModel.orderNo}}</span>
+                                <div class="input-container">
+                                    <input formControlName="pay_date" type="datetime-local" required="">
+                                    <label>วัน-เวลา</label>
+                                </div>
+                                <div class="input-container">
+                                    <input formControlName="pay_money" type="text" required="">
+                                    <label>ยอดชำระ</label>
+                                </div>
+                                <div class="input-container">		
+                                <input type="time" required=""/>
+                                <label>เวลา</label>
+                                </div> -->
+                                <!-- <div class="input-container">
+                                    <span class="mb-3">รายละเอียดการชำระ / สลิปชำระเงิน</span>
+                                    <div class="avatar-upload" aria-dropeffect="none">
+                                        <img [src]="url" class="img-thumbnail avatar-preview">
+                                    </div><br>
+                                    <input type="file" name="files" id="upload" (change)="onFileChanged($event)" value="Choose a file" style="overflow: visible;">
+                                </div>
+
+                                <div class="input-container">
+                                    <quill-editor [styles]="{'height' : '250px'}" [modules]="config" formControlName="detail"></quill-editor>
+                                </div> -->
+                                <div class="input-container">
+                                    <span class="text-left mb-1">ปรับสถานะ : </span>
+                                    <div class="selectdiv">
+                                        <select formControlName="order_status" [(ngModel)]="orderModel.orderStatus" required="">
+                    <option>รอชำระ</option>
+                    <option>ชำระเงินแล้ว</option>
+                    <option>รอจัดส่ง</option>
+                    <option>จัดส่งแล้ว</option>
+                  </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Container -->
+                </div>
+                <!-- End Modal -->
+
+            </form>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <input type="submit" class="btn btn-info" value="Save" (click)="onSubmit()">
+            </div>
+        </div>
+    </div>
+</div>

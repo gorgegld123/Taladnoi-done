@@ -1,0 +1,26 @@
+<div class="col-lg-12 mx-auto top" style="font-family: 'Prompt', sans-serif; background-color: #ffffff ;">
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <!-- <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" /> -->
+                <h1>เข้าสู่ระบบ</h1>
+            </div>
+
+            <!-- Login Form -->
+            <form class="formregister" [formGroup]="form" (submit)="onSubmit()">
+                <input type="text" id="username" class="fadeIn second" formControlName="username" placeholder="username">
+                <input type="text" id="password" class="fadeIn third" formControlName="password" placeholder="password">
+                <br><br><input type="submit" class="fadeIn fourth" value="Log In">
+            </form>
+
+            <!-- Remind Passowrd -->
+            <div id="formFooter">
+                <a class="underlineHover" href="http://ta-lad-noi.com/Homestay-Users/register-homestay">สมัครสมาชิก</a>
+            </div>
+
+        </div>
+    </div>
+</div>

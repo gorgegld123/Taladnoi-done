@@ -1,0 +1,83 @@
+.form-box input {
+    border: 1px solid #eeeeee;
+    border-radius: 30px;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.badge {
+  color: #fff;
+    width: 20px;
+    height: 20px;
+    background: #cc2535;
+    line-height: 15px;
+    text-align: center;
+    border-radius: 30px;
+    font-size: 10px;
+    top: -17px;
+    right: 20px;
+    font-family: 'Kanit';
+    font-weight: 800;
+}
+
+
+.description {
+  margin:5px;
+  text-align:center;
+  font-family: 'Kanit', sans-serif;
+  }
+
+.description span {
+  display: block;
+  font-size: 14px;
+  color: #43484D;
+  font-weight: 400;
+  }
+
+.li {
+  cursor: pointer;
+}
+
+.topbar .nav-item .nav-link  {
+  font-family: 'Kanit' , sans-serif;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  padding: 0 .75rem;
+}
+
+.cssCircle {
+    -webkit-border-radius: 999px;
+    -moz-border-radius: 999px;
+    border-radius: 999px;
+    
+    width: 13px;
+    height: 13px;
+    padding: 0px;
+    margin: auto;
+    margin-top: 5px;
+    background: #c52626;
+    color: #ffffff;
+    text-align: center;
+
+    font: 13px Arial, sans-serif
+  }
+  
+  .cssCircle:hover {
+    background: #cc2535 ;
+    cursor: pointer;
+  }
+  
+  .minusSign {
+    line-height: 0.9em;
+    margin-bottom: 1px;
+  }
+  
+  .plusSign {
+    line-height: 1.1em;
+  }
+  
+  .minusSign:hover,
+  .plusSign:hover {
+    color: white;
+  }

@@ -1,0 +1,45 @@
+
+body {
+    font-family: 'Kanit', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+  }
+
+#outPopUp {
+  width: 100%;
+  left: 33.333%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.textheader {
+    font-family: 'Kanit', sans-serif;
+      color: rgb(100, 100, 100);
+      margin-top: 0;
+      margin-bottom: 0rem;
+      font-style: normal;
+      font-weight: 500;
+      text-transform: normal;
+    }
+
+.upload-btn-wrapper {
+  width: 100%;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.upload-btn-wrapper:hover {
+  cursor: pointer;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
