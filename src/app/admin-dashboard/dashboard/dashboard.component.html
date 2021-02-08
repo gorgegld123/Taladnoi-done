@@ -63,9 +63,21 @@
         <!-- Area Chart -->
         <div class="col-xl-8 col-lg-7">
             <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
+
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">กราฟแสดงยอดรายรับ</h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header">Dropdown Header:</div>
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -81,14 +93,33 @@
         <!-- Content Row -->
         <!-- <div class="row">
             <!-- Content Column -->
-        <div class="col-lg-6 mb-4">
+        <div class="col-lg-10 mb-4">
             <!-- Project Card Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">รายการสั่งซื้อ</h6>
                 </div>
                 <div class="card-body">
-
+                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                        <thead>
+                            <tr>
+                                <th>รหัสออเดอร์</th>
+                                <th>วันที่สั่งซื้อ</th>
+                                <th>สถานะ</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let order of orderList">
+                                <td>{{ order.orderNo }}</td>
+                                <td>{{ order.orderdate | date:'medium' }}</td>
+                                <td>{{ order.orderStatus }}</td>
+                                <td><a [routerLink]="['/auth/order']" routerLinkActive="router-link-active">
+                                    ดูรายละเอียด
+                                </a></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -4,8 +4,6 @@
         <div class="header-bottom  header-sticky">
             <div class="container-fluid">
                 <div class="row align-items-center">
-                    <app-breadcrumbs></app-breadcrumbs>
-
                     <!-- Logo -->
                     <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
                         <div class="logo">
@@ -18,7 +16,11 @@
                             <nav>
                                 <ul id="navigation">
                                     <li><a [routerLink]="['/']" routerLinkActive="router-link-active">หน้าแรก</a></li>
-                                    <li><a routerLinkActive="router-link-active" (click)="anchorShoplist()">ร้านค้า</a>
+                                    <li><a [routerLink]="['/']" (click)="anchorShoplist()">ร้านค้า</a>
+                                        <ul class="submenu">
+                                            <li *ngFor="let s of Shoplist">
+                                                <a [routerLink]="['/products/shop' , s.shopID]" (click)="showLoader()" routerLinkActive="router-link-active"> {{s.shop_name}}</a></li>
+                                        </ul>
                                     </li>
                                     <li><a [routerLink]="['/products']" routerLinkActive="router-link-active">สินค้าแนะนำ</a>
                                         <ul class="submenu">

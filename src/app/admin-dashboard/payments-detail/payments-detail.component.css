@@ -1,0 +1,19 @@
+.card-img-top {
+    height: 15vw;
+    object-fit: cover;
+}
+
+.fs-title {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #E1E8EE;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 15px;
+    color: rgb(54, 54, 54);
+    margin-bottom: 0px;
+}

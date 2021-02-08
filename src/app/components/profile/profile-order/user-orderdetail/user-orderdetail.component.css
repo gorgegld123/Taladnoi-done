@@ -15,7 +15,24 @@
 
 .box {
     border-radius: 3px;
-    padding: 30px 50px;
+    padding: 25px 20px;
+}
+
+.next-btn {
+    font-size: 16px;
+    width: 103px;
+    height: 43px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 3px;
+    background: #c72129;
+    color: #fff;
+}
+
+.next-btn:hover {
+    transform: scale(1.1);
 }
 
 svg {
@@ -55,8 +72,17 @@ button:focus i {
 
 .input-container {
     position: relative;
-    margin-top: 20px;
     margin-bottom: 25px;
+}
+
+.input-container .formarea {
+    float: left;
+    margin: 0px 20px;
+}
+
+.input-container .notice-text {
+    padding: 0px 20px 20px 20px;
+    display: inline-block;
 }
 
 .input-container label {
@@ -66,6 +92,11 @@ button:focus i {
     font-size: 16px;
     color: rgb(0, 0, 0);
     transition: all 0.5s ease-in-out;
+}
+
+.typeorderArea .title {
+    font-size: 18px;
+    margin-right: 5px;
 }
 
 input:required:invalid::-webkit-datetime-edit {
@@ -88,10 +119,46 @@ input:required:invalid::-webkit-datetime-edit {
     border-bottom: 1px solid #e74c3c;
 }
 
+.input-container select {
+    border: 0;
+    border-bottom: 1px solid #555;
+    background: transparent;
+    width: 100%;
+    padding: 2px 0 5px 0;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+}
+
+.input-container select:focus {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #e74c3c;
+}
+
 .input-container input:focus~label,
 .input-container input:valid~label {
     top: -12px;
     font-size: 12px;
+}
+
+.mini-header-page {
+    margin: 20px 0px;
+    min-height: 69px;
+    box-sizing: border-box;
+}
+
+.header-page {
+    background-color: #a91d2a;
+    text-align: center;
+    padding: 25px 25px;
+    position: relative;
+    z-index: 9;
+}
+
+.header-buyer .title {
+    font-size: 18px;
+    margin-right: 5px;
+    color: white;
 }
 
 .selectdiv {

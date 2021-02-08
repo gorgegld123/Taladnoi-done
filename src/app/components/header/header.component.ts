@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
   id: number;
   //cartItems : any;
   cartItems = [];
+  Shoplist : any;
   productTotal: number;
   isLogin: boolean = false;
   constructor(private msg: MessengerService, private CrudService: CrudService, private toastr: ToastrService 
@@ -48,9 +49,22 @@ export class HeaderComponent implements OnInit {
     this.cartDetail();
     this.cartItemValue();
     this.calTotal();
+
+    this.CrudService.getShoplist().subscribe(
+      (shoplist) => {
+        //console.log(products);
+        this.Shoplist = shoplist;
+        //this.product = Array.of(products);
+        console.log(this.Shoplist)
+      }
+    );
     //console.log(this.cartItems)
   }
 
+  showLoader(){
+    setTimeout(location.reload.bind(location));
+  }
+  
   onLogout() {
     this.authen.clearAuthenticated();
     setTimeout(location.reload.bind(location), 500);

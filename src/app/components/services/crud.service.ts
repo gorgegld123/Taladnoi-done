@@ -31,11 +31,15 @@ export class CrudService {
   }
 
   getOrderlist(value : any): Observable<any> {
-    return this.http.post<any>(this.url + 'productinshop.php' , value)
+    return this.http.post<any>(this.url + 'ordermanagement.php' , value)
   }
 
   getOrderUser(value : any): Observable<any> {
     return this.http.post<any>(this.url + 'order_detail.php' , value)
+  }
+
+  getPaymentsList(value :any) : Observable<any> {
+    return this.http.post<any>(this.url + 'get_payment.php' , value)
   }
 
   getOrderlist2(): Observable<any> {
@@ -49,7 +53,6 @@ export class CrudService {
   getProduct(): Observable<Product []> {
     return this.http.get<Product []>(this.url + 'get_product_api.php')
   }
-  
 
   getProductViaSession(value: any): Observable<any> {
     return this.http.post<any>(this.url + 'product_by_user.php', value);

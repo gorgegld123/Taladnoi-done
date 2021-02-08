@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="col-lg-10 col-md-12 col-sm-12 ml-lg-5">
+        <div class="card-body border-bottom mb-3">
+            <div class="row">
+                <div class="card-body col-lg-6 col-sm-12 py-">
+                    <i class="fas fa-dollar-sign mr-3"></i>&nbsp;รายละเอียดการชำระเงิน
+                </div>
+                <div class="col-lg-6 d-sm-none">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 mb-4" *ngFor="let p of paymentsList">
+
+                <!-- Project Card Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary"></h6>
+                    </div>
+                    <img class="card-img-top" src="http://ta-lad-noi.com/taladnoiapi/productImage/{{p.image}}" (click)="show(p)">
+                    <div class="card-body">
+                        <h6 class="m-0 fs-subtitle">รหัสชำระเงิน : {{p.id}}</h6>
+                        <h6 class="m-0 fs-subtitle">รหัสออเดอร์ : {{p.order_id}}</h6>
+                        <hr>
+                        <h6 class="m-0 fs-subtitle">รายละเอียดการชำระเงิน</h6>
+                        <div [innerHTML]="p.detail"></div>
+                        <hr>
+                        <h6 class="m-0 fs-subtitle">วันที่ชำระเงิน : {{p.pay_date}}</h6>
+                        <h6 class="m-0 fs-subtitle">ยอดชำระ : <span class="text-danger">{{p.pay_money}}</span></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="http://ta-lad-noi.com/taladnoiapi/productImage/{{productDetail.image}}" id="imagepreview">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close mr-2 mt-2" data-dismiss="modal" (click)="hide()">&times;</button>
+            </div>
+        </div>
+    </div>
+</div>

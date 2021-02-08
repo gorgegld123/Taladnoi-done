@@ -15,6 +15,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { DashboardlayoutComponent } from './admin-dashboard/dashboardlayout/dashboardlayout.component';
 import { ProfileOrderComponent } from './components/profile/profile-order/profile-order.component';
 import { ProfileDetailComponent } from './components/profile/profile-detail/profile-detail.component';
+import { UserOrderdetailComponent } from './components/profile/profile-order/user-orderdetail/user-orderdetail.component';
 
 
 
@@ -68,6 +69,9 @@ const routes: Routes = [
 
 {
   path:'profile' , component: ProfileComponent, children: [{path: '', component: ProfileDetailComponent}]
+},
+{
+  path:'order-detail' , component: ProfileComponent, children: [{path:'', component:UserOrderdetailComponent}]
 },
 
 

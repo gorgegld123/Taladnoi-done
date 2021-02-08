@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CrudService } from 'src/app/components/services/crud.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient, HttpEventType } from '@angular/common/http';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 registerLocaleData(th);
 declare const $: any;
@@ -57,6 +58,8 @@ export class UserOrderdetailComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+    console.log(this.orderModel);
     this.genPaymentID();
     this.calTotal();
     this.CrudService.getCategorie().subscribe(
@@ -72,6 +75,7 @@ export class UserOrderdetailComponent implements OnInit {
       order_status: ['ชำระเงินแล้ว', Validators.required],
       pay_money: ['' ,Validators.required],
       pay_date: ['' , Validators.required],
+      shopID: ['' ,Validators.required],
       detail: ['', Validators.required]
     });
   }
@@ -88,11 +92,11 @@ export class UserOrderdetailComponent implements OnInit {
 
   isClicked: boolean = false;
   getTotal(total) {
-    let sum = 0     
-    sum = total.reduce((acc, {total}) => acc += +(total || 0), 0 );
-    this.productTotal = sum;
+    // let sum = 0     
+    // sum = total.reduce((acc, {total}) => acc += +(total || 0), 0 );
+    // this.productTotal = sum;
   
-    this.validateFrom.patchValue({pay_money: this.productTotal })
+    this.validateFrom.patchValue({shopID: this.orderModel.product[0].shopID , order_id: this.orderModel.product[0].orderNo})
     
   }
  
@@ -102,7 +106,7 @@ export class UserOrderdetailComponent implements OnInit {
 
   }
   
-  url = './assets/img/thumbnail.jpg';
+  url = '';
   selectedFile : File;
 
   onFileChanged(event) {
@@ -145,13 +149,38 @@ export class UserOrderdetailComponent implements OnInit {
       );
       await this.toastr.success('การดำเนินการเรียบร้อย', 'สำเร็จ !');
       setTimeout(location.reload.bind(location), 1000);
-    //console.log(this.validateFrom.value);
+    console.log(this.validateFrom.value);
     }
   }
 
   del(){
-    this.CrudService.delOrders(this.orderModel.orderNo).subscribe();
+    Swal.fire({
+      title: 'คุณแน่ใจแล้วใช่หรือไม่ ต้องการยกเลิกคำสั่งซื้อ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'ใช่, ยกเลิกออเดอร์เลย!',
+      cancelButtonText: 'ไม่, เก็บไว้ก่อน'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire({
+          title : 'สำเร็จ!',
+          text: 'ยกเลิกออเดอร์ของท่านเรียบร้อยแล้ว.',
+          icon: 'success',
+          timer: 1000,
+        }
+        )
+        this.CrudService.delOrders(this.orderModel.orderNo).subscribe();
+        setTimeout(location.reload.bind(location), 1500);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'ยกเลิก!',
+          'ออเดอร์ของคุณยังคงอยู่ในระบบ :)',
+          'error'
+        )
+      }
+    })
   }
-  
+    // this.CrudService.delOrders(this.orderModel.orderNo).subscribe();
 }
+  
 

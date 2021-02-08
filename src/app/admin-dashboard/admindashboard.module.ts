@@ -22,7 +22,9 @@ import { OrderDetailComponent } from './ordermanagement/order-detail/order-detai
 import { QuillModule } from 'ngx-quill';
 import { PipeexportModule } from '../pipeexport/pipeexport.module';
 import { SumPipe } from './ordermanagement/order-detail/sum.pipe';
-
+import { PaymentsDetailComponent } from './payments-detail/payments-detail.component';
+import { DataTablesModule } from "angular-datatables";
+import { LightboxModule } from 'ngx-lightbox';
 
 
 
@@ -38,7 +40,9 @@ import { SumPipe } from './ordermanagement/order-detail/sum.pipe';
     DragDropModule,
     MatTreeModule,
     QuillModule.forRoot(),
-    PipeexportModule
+    PipeexportModule,
+    DataTablesModule,
+    LightboxModule
   ],
 
   exports: [
@@ -59,6 +63,7 @@ import { SumPipe } from './ordermanagement/order-detail/sum.pipe';
     OrdermanagementComponent,
     OrderDetailComponent,
     SumPipe,
+    PaymentsDetailComponent,
     
   ]
 })

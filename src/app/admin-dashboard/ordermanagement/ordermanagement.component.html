@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="col-lg-10 col-md-12 col-sm-12 ml-lg-5">
+    <div class="col-lg-11 col-md-12 col-sm-12 ml-lg-5">
         <div class="card-body border-bottom mb-5" style="border-radius: 5px">
             <div class="row">
                 <div class="card-body col-lg-6 col-sm-12 py-3">
@@ -37,8 +37,8 @@
                     <span><b>#{{item.orderNo}}</b></span>
                 </div>
                 <div class="description col-lg-4 d-none d-lg-block">
-                    <span><b>45/362 Thetree Privata , </b></span>
-                    <span class="fs-subtitle">แขวงบางซื่อ เขตบางซื่อ กรุงเทพฯ 10800</span>
+                    <span><b>{{item.address}} </b></span>
+                    <span class="fs-subtitle">เบอร์ติดต่อ {{item.phone}}</span>
                 </div>
                 <div class="orderid col-lg-2 col-md-3 d-lg-block d-md-block d-none">
                     <span class="fs-subtitle">{{item.orderdate | date:'medium' }}</span>
@@ -61,7 +61,13 @@
                     <div class="order-detail mb-3 py-1">
                         <div class="col-lg-6">
                             <div class="py-3 text-center">
-                                <span class="text-gray-600">รายละเอียดออเดอร์ #{{item.orderNo}}</span>
+                                <span class="text-black-600 d-block">รายละเอียดออเดอร์ #{{item.orderNo}}</span>
+                            </div>
+                            <div class="text-left mb-3">
+                                <span class="fs-subtitle text-black-800 d-block">ชื่อลูกค้า : {{item.firstname}} {{item.lastname}}</span>
+                                <span class="fs-subtitle text-black-800 d-block">เบอร์ติดต่อ : {{item.phone}}</span>
+                                <span class="fs-subtitle text-black-800 d-block">สถานที่จัดส่ง : {{item.address}}</span>
+                                <span class="fs-subtitle text-black-800 d-block">วันที่สั่งซื้อ : {{item.orderdate | date:'medium'}}</span>
                             </div>
                             <!-- Shopping cart table -->
                             <table class="table bg-white rounded shadow-sm mb-2">

@@ -1,8 +1,11 @@
 <div class="container mt-3" style="font-family: 'Kanit', sans-serif;">
-    <div class="row">
-        <div class="title mb-20 text-left col-12">
+    <div class="row d-flex">
+        <div class="col-12 title mb-20 text-left">
             รายการสินค้า
+            <app-breadcrumbs></app-breadcrumbs>
         </div>
+    </div>
+    <div class="row">
         <div class="col-6 mt-1 mb-10" style="font-family: Kanit;">
             <div class="searchbox animated fadeInUp">
                 <input type="text" [(ngModel)]="searchFilters" placeholder="ค้นหา" id="search" name="search" class="search"><i class="fas fa-search"></i>

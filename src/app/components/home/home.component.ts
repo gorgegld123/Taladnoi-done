@@ -80,10 +80,20 @@ export class HomeComponent implements OnInit {
     ]
   };
 
+  storeDataGet: any = [];
+
   constructor(private CrudService: CrudService
   ) { }
 
   ngOnInit() {
+
+    
+    let cartDataNull = localStorage.getItem('cart');
+    if (cartDataNull == null) {
+      let storeDataGet: any = [];
+      storeDataGet.push();
+      localStorage.setItem('cart', JSON.stringify(storeDataGet));
+    }
 
     $('#myCarousel').carousel({
       interval: 5000,
