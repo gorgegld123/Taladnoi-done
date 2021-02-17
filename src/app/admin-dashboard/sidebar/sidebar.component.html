@@ -22,20 +22,14 @@
         ระบบจัดการร้านค้า
     </div>
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+    <li class="nav-item" *ngIf="UserLogin.position == 'แอดมินใหญ่'">
+        <a class="nav-link collapsed" aria-expanded="true" [routerLink]="['/auth/member']" routerLinkActive="router-link-active">
             <i class="fas fa-fw fa-cog"></i>
             <span>จัดการสมาชิก</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">เจ้าของร้าน</a>
-                <a class="collapse-item" href="#">ลูกค้า</a>
-            </div>
-        </div>
     </li>
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="UserLogin.position == 'แอดมิน'">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
             <span>จัดการร้านค้า</span>
@@ -51,13 +45,13 @@
         </div>
     </li>
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <hr class="sidebar-divider" *ngIf="UserLogin.position == 'แอดมิน'">
     <!-- Heading -->
-    <div class="sidebar-heading">
-        Addons
+    <div class="sidebar-heading" *ngIf="UserLogin.position == 'แอดมิน'">
+        เพิ่มเติม
     </div>
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
             <span>Pages</span>
@@ -74,19 +68,14 @@
                 <a class="collapse-item" href="#">Blank Page</a>
             </div>
         </div>
-    </li>
+    </li> -->
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
+    <li class="nav-item" *ngIf="UserLogin.position == 'แอดมิน'">
+        <a class="nav-link" [routerLink]="['/auth/shop_detail']">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>ปรับแต่งรายละเอียดร้าน</span></a>
     </li>
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
-    </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
     <!-- Sidebar Toggler (Sidebar) -->

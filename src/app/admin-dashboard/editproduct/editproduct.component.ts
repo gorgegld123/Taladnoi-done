@@ -126,9 +126,9 @@ export class EditproductComponent implements OnInit {
           console.log(result);
         }
       );
-      $('#editProduct').modal('hide');
+      // $('#editProduct').modal('hide');
       this.toastr.success('เพิ่มข้อมูลสินค้าเรียบร้อย', 'สำเร็จ !');
-      setTimeout(location.reload.bind(location), 1000);
+      // setTimeout(location.reload.bind(location), 1000);
       //this.reload();
 
       //console.log(this.model);

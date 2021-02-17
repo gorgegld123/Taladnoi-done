@@ -1,0 +1,105 @@
+<!-- Edit Modal HTML -->
+<div id="editUser" class="modal fade">
+    <div class="modal-dialog modal-lg rounded bg-white mt-5" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;">
+        <div class="modal-content" style="font-family: 'Kanit' ">
+            <form [noValidate]="false">
+                <div class="modal-body" [formGroup]="form">
+                    <div class="container rounded bg-white">
+                        <div class="row border-bottom-secondary">
+                            <div class="form-header border-bottom-primary">
+                                <h1><i class="fas fa-edit mr-2"></i>ข้อมูลสมาชิก</h1>
+                            </div>
+                            <hr>
+                            <div class="col-md-12">
+                                <div class="p-3 py-5">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div class="d-flex flex-row align-items-center back" data-dismiss="modal"><i class="gg-arrow-long-left"></i>
+                                            <h6>ย้อนกลับ</h6>
+                                        </div>
+                                        <h6 class="text-right border-bottom-danger">แก้ไขข้อมูล</h6>
+                                    </div>
+                                    <div class="row fadeIn first">
+                                        <div class="col-md-6">
+                                            <label>ชื่อจริง</label>
+                                            <input name="firstname" id="firstname" type="text" formControlName="firstname" [(ngModel)]="userModel.firstname" [ngClass]="{'is-invalid':form.get('firstname').touched && form.get('firstname').invalid}" required="">
+                                            <div class="invalid-feedback">โปรดกรอกชื่อ</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>นามสกุล</label>
+                                            <input name="lastname" id="lastname" type="text" formControlName="lastname" [(ngModel)]="userModel.lastname" [ngClass]="{'is-invalid':form.get('lastname').touched && form.get('lastname').invalid}">
+                                            <div class="invalid-feedback">โปรดกรอกนามสกุล</div>
+                                        </div>
+                                    </div>
+                                    <div class="row fadeIn first">
+                                        <div class="col-md-12">
+                                            <label>Email</label>
+                                            <input name="firstname" id="email" type="text" formControlName="email" [(ngModel)]="userModel.email" disabled required="">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label>เบอร์โทรศัพท์</label>
+                                            <input name="lastname" id="email" type="text" formControlName="phone" [(ngModel)]="userModel.phone" disabled required="">
+                                        </div>
+                                    </div>
+                                    <div class="row fadeIn first">
+                                        <div class="col-md-12">
+                                            <label>แก้ไขรหัสผ่าน</label>
+                                            <input name="password" id="password" type="password" formControlName="password" [(ngModel)]="userModel.password">
+                                        </div>
+                                    </div>
+                                    <div class="row fadeIn first">
+                                        <div class="col-md-12">
+                                            <label>ที่อยู่</label>
+                                            <textarea name="address" id="address" type="address" rows="5" cols="33" formControlName="address" [(ngModel)]="userModel.address" disabled required=""></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row fadeIn first">
+                                        <div class="col-md-12">
+                                            <label>ตำแหน่ง</label>
+                                            <select nice-select id='position' name='position' formControlName="position" [(ngModel)]="userModel.position" style="width: 100%;" [ngClass]="{'is-invalid':form.get('position').touched && form.get('position').invalid}">
+                                                <option value="">-- เลือกตำแหน่ง --</option>
+                                                <option value="แอดมิน">เจ้าของร้าน</option>
+                                                <option value="สมาชิก">ลูกค้า</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="button" (click)="submit()"><i class="fas fa-save"></i>บันทึกข้อมูล</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label>รายละเอียดข้อมูล</label>
+                        <input name="username" id="username" type="text" class="form-control" formControlName="username"
+                            [(ngModel)]="userModel.username" disabled
+                            [ngClass]="{'is-invalid':form.get('username').touched && form.get('username').invalid}"
+                            required="">
+                        <div class="invalid-feedback">โปรดกรอกชื่อสินค้า</div>
+                    </div>
+                    <div class="form-group">
+                        <label>ชื่อจริง</label>
+                        <input name="firstname" id="firstname" type="text" class="form-control"
+                            formControlName="firstname" [(ngModel)]="userModel.firstname"
+                            [ngClass]="{'is-invalid':form.get('firstname').touched && form.get('firstname').invalid}"
+                            required="">
+                        <div class="invalid-feedback">โปรดกรอกชื่อสินค้า</div>
+                    </div>
+                    <div class="form-group">
+                        <label>นามสกุล</label>
+                        <input name="lastname" id="lastname" type="text" class="form-control" formControlName="lastname"
+                            [(ngModel)]="userModel.lastname" style="width:30%">
+                        <div class="invalid-feedback">โปรดกรอกรหัสประเภทสินค้า</div>
+                    </div>
+                    <div class="form-group">
+                        <label>เปลี่ยนรหัสผ่าน</label>
+                        <input name="password" id="password" type="password" class="form-control"
+                            formControlName="cname" [(ngModel)]="userModel.password">
+                    </div> -->
+                </div><br>
+            </form>
+            <!-- <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <input type="submit" class="btn btn-info" value="Save" (click)="submit()">
+            </div> -->
+        </div>
+    </div>
+</div>

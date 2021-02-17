@@ -18,6 +18,9 @@
     </div>
 
 </ngx-slick-carousel > -->
+<ngx-spinner bdColor="#111" size="medium" color="#d34d4d" type="ball-pulse" [fullScreen]="true">
+    <p style="font-size: 15px; color: white">Loading...</p>
+</ngx-spinner>
 <ngx-slick-carousel class="carousel" [config]="slideConfig2">
     <div ngxSlickItem *ngFor="let slide of slides">
         <div class="img-area">
@@ -36,6 +39,18 @@
     </div>
 </ngx-slick-carousel>
 <!-- Mobile Menu -->
+
+<div id="demo" class="card-holder carousel-fade" data-ride="carousel">
+    <div class="box-inner">
+        <div class="caption">
+            <h1 class="mb-3 font-weight-bold" style="letter-spacing: 1.5px; ">เกี่ยวกับเรา</h1>
+            <p> ชุมชนตลาดน้อยถือว่าเป็นหนึ่งในชุมชนที่เก่าแก่ย่านหนึ่งในกรุงเทพ มีการผสมผสานของวัฒนธรรมไทย-จีนเข้าด้วยกัน ไม่ว่าจะเป็นสินค้า อาหาร ความเก่าแก่ของบ้านเรือน รวมทั้งบรรยากาศและวิถีชีวิตของคนในชุมชน ในความเก่าแก่นั้นมีจิตรกรรมต่างๆที่สวยงาม จึงทำให้ตลาดน้อยเป็นที่นิยมของคนไทยและชาวต่างชาติ
+                อีกทั้งยังมี ร้านอาหารชื่อดังที่ไม่ควรพลาด เช่น ก๋วยเตี๋ยวรู โกยซีหมี่ กะหรี่ปั๊ป และยังมีสินค้าของทำมือที่สืบทอดจากอดีตจนถึงปัจจุบัน ไม่ว่าจะเป็น หมอนถักทำมือ ถังไม้โบราณ และสินค้าอื่นๆให้ชมกันภายในเว็บไซต์ของเรา
+            </p>
+        </div>
+    </div>
+</div>
+
 
 
 <div id="myCarousel" class="carousel slide carousel-fade mt-50" data-ride="carousel">
@@ -117,9 +132,9 @@
                                 <div class="img-info">
                                     <div class="info-inner">
                                         <span class="p-name">{{item.shop_name}}</span>
-                                        <span class="p-company">{{item.shop_detail}}</span>
+                                        <!-- <span class="p-company" [innerHTML]="item.shop_detail"></span> -->
                                     </div>
-                                    <div class="a-size">ประเภทร้านค้า : <span class="size">อาหาร</span></div>
+                                    <!-- <div class="a-size">ประเภทร้านค้า : <span class="size">อาหาร</span></div> -->
                                 </div>
                             </div>
 

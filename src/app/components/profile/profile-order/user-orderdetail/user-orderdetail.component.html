@@ -79,9 +79,9 @@
                     </div><br>
                     <div class="input-container">
                         <div class="formarea">
-                            <span class="title">Shop ID</span>
+                            <span class="title">เลือกร้านที่จะชำระ</span>
                             <select class="mt-1" formControlName="shopID" type="text">
-                                <option *ngFor="let p of orderModel.product" value="{{p.shopID}}">{{p.shopname}}
+                                <option *ngFor="let p of uniqueTeams" value="{{p.id}}">{{p.name}}
                                 </option>
                             </select>
                         </div>

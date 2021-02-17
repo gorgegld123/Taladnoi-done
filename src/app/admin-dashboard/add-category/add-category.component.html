@@ -1,67 +1,63 @@
 <div class="container-fluid">
-  <div class="col-10">
-    <div class="card-body bg-white px-3 py-3">
-      <div class="row">
-        <div class="col-6 col-sm-6">
-          <i class="fa fa-cube"></i>&nbsp;ประเภทสินค้า
-        </div>
-        <div class="col-6 col-sm-6 text-right">
+    <div class="col-10">
+        <div class="card-body bg-white px-3 py-3">
+            <div class="row">
+                <div class="col-6 col-sm-6">
+                    <i class="fa fa-cube"></i>&nbsp;ประเภทสินค้า
+                </div>
+                <div class="col-6 col-sm-6 text-right">
 
-          <a href src="#addCategory" class="btn btn-danger text-white" tabindex="-1" role="button" aria-disabled="true" data-toggle="modal"
-            data-target="#addCategory">
-            <i class="fa fa-plus-square"></i>&nbsp;&nbsp;ประเภทสินค้า</a>
-        </div>
-      </div><br>
-      <ul id="page_list" class="page_list list-unstyled ui-sortable" *ngFor="let cat of productinCat">
-        <table width="100%" class="border table_order">
-          <tbody>
-            <tr>
-              <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCat"
-                  aria-expanded="true" aria-controls="collapseCat">
-                  <i class="fa fa-list text-secondary"><span class="col-3"
+                    <a href src="#addCategory" class="btn btn-danger text-white" tabindex="-1" role="button" aria-disabled="true" data-toggle="modal" data-target="#addCategory">
+                        <i class="fa fa-plus-square"></i>&nbsp;&nbsp;ประเภทสินค้า</a>
+                </div>
+            </div><br>
+            <ul id="page_list" class="page_list list-unstyled ui-sortable" *ngFor="let cat of productinCat">
+                <table width="100%" class="border table_order">
+                    <tbody>
+                        <tr>
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCat" aria-expanded="true" aria-controls="collapseCat">
+                                    <i class="fa fa-list text-secondary"><span class="col-3"
                       style="font-family: Kanit;">{{cat.categoryName}}</span></i>
-                </a>
-            <tr>
-              <td class="align-middle">
-                <div id="collapseCat" class="collapse " aria-labelledby="headingTwo">
-                  <span style="margin-left: 50px; color: #dc3545;">รายการสินค้าในประเภท
+                                </a>
+                                <tr>
+                                    <td class="align-middle">
+                                        <div id="collapseCat" class="collapse " aria-labelledby="headingTwo">
+                                            <span style="margin-left: 50px; color: #dc3545;">รายการสินค้าในประเภท
                     <hr class="new1"></span>
-                  <li *ngFor="let pincat of cat.product">
-                    <span style="margin-left: 50px;">- {{pincat.productsName}}</span>
-                  </li>
-                </div>
-              </td>
-              <td class="align-middle">
-                <div id="collapseCat2" class="collapse " aria-labelledby="headingTwo">
-                  <span style="margin-left: 50px; color: #dc3545;">รายการสินค้าในประเภท
+                                            <li *ngFor="let pincat of cat.product">
+                                                <span style="margin-left: 50px;">- {{pincat.productsName}}</span>
+                                            </li>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div id="collapseCat2" class="collapse " aria-labelledby="headingTwo">
+                                            <span style="margin-left: 50px; color: #dc3545;">รายการสินค้าในประเภท
                     <hr class="new1"></span>
-                  <li *ngFor="let pincat of cat.product">
-                    <span style="margin-left: 50px;">- {{pincat.productsName}}</span>
-                  </li>
-                </div>
-              </td>
-            </tr>
-            </li>
-            <td width="15%" class="small text-muted">
-              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCat"
-                aria-expanded="true" aria-controls="collapseCat"> สินค้า {{cat.productCount}} รายการ
+                                            <li *ngFor="let pincat of cat.product">
+                                                <span style="margin-left: 50px;">- {{pincat.productsName}}</span>
+                                            </li>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </li>
+                            <td width="15%" class="small text-muted">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCat" aria-expanded="true" aria-controls="collapseCat"> สินค้า {{cat.productCount}} รายการ
               </a>
-            </td>
-            <td colspan="2" width="1%">
-              <div class="btn-group" role="group">
-                <a href="#editCategory" class="btn btn-warning btn-xs text-white" data-toggle="modal" (click)="onEditModal(cat)" >
-                  <i class="fas fa-pencil-alt"></i></a>
-                &nbsp;
-                <a href="product_category_show.php?shop_id=3&amp;t_id=27&amp;work=del" class="btn btn-xs btn-danger"
-                  onclick="return confirm('ยืนยันการลบ');">
-                  <i class="fas fa-trash text-white"></i></a>
-              </div>
-            </td>
-            </tr>
-          </tbody>
-        </table>
-      </ul>
+                            </td>
+                            <td colspan="2" width="1%">
+                                <div class="btn-group" role="group">
+                                    <a href="#editCategory" class="btn btn-warning btn-xs text-white" data-toggle="modal" (click)="onEditModal(cat)">
+                                        <i class="fas fa-pencil-alt"></i></a>
+                                    &nbsp;
+                                    <a class="btn btn-xs btn-danger" (click)="del(cat)">
+                                        <i class="fas fa-trash text-white"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>

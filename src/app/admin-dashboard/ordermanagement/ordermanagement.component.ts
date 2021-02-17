@@ -4,6 +4,7 @@ import th from '@angular/common/locales/th';
 import { registerLocaleData } from '@angular/common';
 import { AccountService } from 'src/app/components/services/account.service';
 import { AuthenService } from 'src/app/components/services/loginservice/authen.service';
+import { Subject } from 'rxjs';
 registerLocaleData(th);
 
 
@@ -17,17 +18,33 @@ registerLocaleData(th);
 })
 export class OrdermanagementComponent implements OnInit {
 
-
+  showModal: boolean;
   orderList: any;
-  panelExpended: boolean = false;
+  panelExpended: boolean = true;
+  gridView: boolean = true;
+  listView: boolean = false;
   UserLogin: any;
   productTotal: number;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+
   constructor(private CrudService: CrudService, private account: AccountService, private authen: AuthenService) { }
 
   ngOnInit(): void {
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10
+    };
+
     this.initialLoadUserLogin();
     //this.calTotal();
 
+  }
+
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
   }
 
   initialLoadUserLogin() {
@@ -44,6 +61,7 @@ export class OrdermanagementComponent implements OnInit {
       (order) => {
         //console.log(products);
         this.orderList = order;
+        this.dtTrigger.next();
         console.log(this.orderList)
         let sum = 0;
         for (let i = 0; i < this.orderList.length; i++) {
@@ -80,6 +98,26 @@ export class OrdermanagementComponent implements OnInit {
   onEditModal(item) {
     Object.assign(this.CrudService.updateOrder, item);
     console.log(item)
+  }
+
+  swapView(){
+    this.gridView = false ;
+    
+  }
+
+  public productDetail:any = Object.assign({});
+  show(p)
+  {
+    this.showModal = true; // Show-Hide Modal Check
+    Object.assign(this.productDetail, p);
+    console.log(this.productDetail);
+    
+    
+  }
+  //Bootstrap Modal Close event
+  hide()
+  {
+    this.showModal = false;
   }
 
 }

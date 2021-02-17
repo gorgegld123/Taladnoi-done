@@ -1,0 +1,69 @@
+.logo_show {
+    display: block;
+    position: relative;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    margin: -100px 0px 0px 5px;
+    z-index: 999;
+    border: 3px solid #ffffff !important;
+    border-radius: 15px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+.results {
+    font-weight: 600
+}
+
+.shopheader img {
+    background-color: #ffffff;
+    object-fit: cover;
+    width: 200px;
+    height: 220px;
+}
+
+.gg-file-document {
+    color: rgb(172, 34, 46);
+    --ggs: 0.8;
+    top: 2px;
+}
+
+.gg-credit-card {
+    --ggs: 0.8;
+    top: 4px;
+    display: inline-block;
+}
+
+.btnsubmit {
+    font-size: 16px;
+    width: 143px;
+    height: 43px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 3px;
+}
+
+.back-btn {
+    background: #c72129;
+    background: #fff;
+}
+
+.next-btn {
+    color: #fff;
+    background: #c72129;
+}
+
+.btnsubmit:focus {
+    outline: none;
+}
+
+.btnsubmit:hover {
+    transform: scale(1.1);
+}

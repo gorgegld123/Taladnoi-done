@@ -1,0 +1,52 @@
+.logo_show {
+    display: block;
+    position: relative;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    margin: -100px 0px 0px 5px;
+    z-index: 999;
+    border: 3px solid #ffffff !important;
+    border-radius: 15px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.gg-list {
+    --ggs: 0.8;
+    top: 5px;
+    display: inline-block;
+}
+
+.gg-info {
+    --ggs: 0.8;
+    top: 5px;
+    display: inline-block;
+}
+
+.gg-credit-card {
+    --ggs: 0.8;
+    top: 4px;
+    display: inline-block;
+}
+
+.gg-trash {
+    --ggs: 0.8;
+    top: 3px;
+    display: inline-block;
+}
+
+.gg-arrow-long-left {
+    --ggs: 0.8;
+    top: -3px;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+.back:hover {
+    color: #21b6db;
+    cursor: pointer
+}

@@ -28,13 +28,15 @@
                                             <li><a href="single-product.html"> สินค้าขายดี</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="http://web.rmutp.ac.th/bus/taladnoijourney/">Blog</a>
+                                    <li><a>Community</a>
                                         <ul class="submenu">
-                                            <li><a href="http://web.rmutp.ac.th/bus/taladnoijourney/review">Review</a>
+                                            <li><a href="http://ta-lad-noi.com">HomeStay</a>
+                                            </li>
+                                            <li><a href="http://journey.ta-lad-noi.com">Blog</a>
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Pages</a>
+                                    <!-- <li><a href="#">Pages</a>
                                         <ul class="submenu">
                                             <li><a href="login.html">Login</a></li>
                                             <li><a href="cart.html">Card</a></li>
@@ -44,7 +46,7 @@
                                             <li><a href="cart.html">Shopping Cart</a></li>
                                             <li><a href="checkout.html">Product Checkout</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </nav>
                         </div>
@@ -61,7 +63,7 @@
                                     </h6>
                                     <div *ngIf="cartItems.length === 0" class="description">
                                         <span class="text-danger">ไม่มีสินค้าในตะกร้าสินค้า !</span> <br>
-                                        <a class="fs-title block" (click)="anchorShoplist()" [routerLink]="['/']" routerLinkActive="router-link-active">คลิกที่นี่เพื่อเลือกซื้อสินค้า</a>
+                                        <a class="fs-title block" (click)="anchorShoplist()" [routerLink]="['/']" routerLinkActive="router-link-active">เลือกซื้อสินค้า</a>
 
                                     </div>
                                     <a class="dropdown-item d-flex align-items-center">
@@ -132,7 +134,7 @@
                                     <a [routerLink]="['/order']" routerLinkActive="router-link-active" class="dropdown-item" href="#">
                                         <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> ประวัติการสั่งซื้อ
                                     </a>
-                                    <a *ngIf="UserLogin.position === 'แอดมิน'" class="dropdown-item" [routerLink]="['/auth/dashboard']" routerLinkActive="router-link-active">
+                                    <a *ngIf="UserLogin.position == 'แอดมิน' || UserLogin.position == 'แอดมินใหญ่' " class="dropdown-item" [routerLink]="['/auth/dashboard']" routerLinkActive="router-link-active" (click)="showLoader()">
                                         <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> จัดการหลังร้าน
                                     </a>
                                     <div class="dropdown-divider"></div>
@@ -219,25 +221,20 @@
                                     <li><a [routerLink]="['/']" role="menuitem" tabindex="-1">หน้าแรก</a></li>
                                     <li><a [routerLink]="['/profile']" role="menuitem" tabindex="-1">ข้อมูลส่วนตัว</a>
                                     </li>
+                                    <li><a [routerLink]="['/order']" role="menuitem" tabindex="-1">ประวัติการสั่งซื้อ</a></li>
+                                    <li><a [routerLink]="['/checkout']" role="menuitem" tabindex="-1">ตะกร้าสินค้า</a></li>
+                                    <li><a [routerLink]="['/']" (click)="anchorShoplist()" role="menuitem" tabindex="-1">ร้านค้า</a></li>
                                     <li><a *ngIf="UserLogin.position === 'แอดมิน'" [routerLink]="['/auth/dashboard']" role="menuitem" tabindex="-1">จัดการหลังร้าน</a></li>
-                                    <li class="hot slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#" tabindex="-1">Blogs</a>
-                                        <span class="slicknav_arrow">+</span></a>
-                                        <ul class="submenu slicknav_hidden" role="menu" aria-hidden="true">
-                                            <li><a href="product_list.html" role="menuitem" tabindex="-1"> Product
-                                                    list</a></li>
-                                            <li><a href="single-product.html" role="menuitem" tabindex="-1"> Product
-                                                    Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="slicknav_collapsed slicknav_parent"><a h ref="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="blog.html" tabindex="-1">Blog</a>
+
+                                    <!-- <li class="slicknav_collapsed slicknav_parent"><a h ref="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="blog.html" tabindex="-1">Blog</a>
                                         <span class="slicknav_arrow">+</span></a>
                                         <ul class="submenu slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
                                             <li><a href="blog.html" role="menuitem" tabindex="-1">Blog</a></li>
                                             <li><a href="single-blog.html" role="menuitem" tabindex="-1">Blog
                                                     Details</a></li>
                                         </ul>
-                                    </li>
-                                    <li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#" tabindex="-1">Pages</a>
+                                    </li> -->
+                                    <!-- <li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="#" tabindex="-1">Pages</a>
                                         <span class="slicknav_arrow">+</span></a>
                                         <ul class="submenu slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
                                             <li><a href="login.html" role="menuitem" tabindex="-1">Login</a></li>
@@ -249,8 +246,8 @@
                                             <li><a href="checkout.html" role="menuitem" tabindex="-1">Product
                                                     Checkout</a></li>
                                         </ul>
-                                    </li>
-                                    <li><a [routerLink]="['/dashboard']" routerLinkActive="router-link-active">Contact</a></li>
+                                    </li> -->
+                                    <!-- <li><a [routerLink]="['auth/dashboard']" routerLinkActive="router-link-active">Contact</a></li> -->
                                 </ul>
                             </div>
 

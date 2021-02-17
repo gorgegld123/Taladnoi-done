@@ -2,33 +2,20 @@
     <div class="col-lg-11 col-md-12 col-sm-12 ml-lg-5">
         <div class="card-body border-bottom mb-5" style="border-radius: 5px">
             <div class="row">
-                <div class="card-body col-lg-6 col-sm-12 py-3">
+                <div class="card-body col-lg-6 col-sm-12 mt-3">
                     <i class="fa fa-bars mr-3"></i>&nbsp;รายละเอียดออเดอร์
                 </div>
-                <div class="col-lg-6 d-sm-none">
+                <div class="col-lg-6 col-sm-12 py-3">
+                    <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                        <button type="button" class="p-btn bg-white border" aria-pressed="false" (click)="gridView = !gridView"><i
+                                class="fa fa-th-large text-black-50"></i></button>
+                        <button type="button" class="p-btn bg-white border" aria-pressed="false" (click)="gridView = !gridView"><i
+                                class="fa fa-th-list text-black-50"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- <div class="row py-1 mt-15 d-flex" style="margin-left:1px;">
-      <div class="col-1 ">
-      </div>
-      <div class="orderid col-2">
-        <span class="fs-subtitle text-gray-600">รหัสออเดอร์</span>
-      </div>
-      <div class="description col-4">
-        <span class="fs-subtitle text-gray-600">สถานที่จัดส่ง</span>
-      </div>
-      <div class="order-id col-1">
-        <span class="fs-subtitle text-gray-600">วันที่สั่งซื้อ</span>
-      </div>
-      <div class="order-id col-1">
-        <span class="fs-subtitle text-gray-600 d-block text-align-left mb-2">สถานะ</span>
-      </div>
-      <div class="col-3"></div>
-    </div> -->
-
-
-        <div clas="row" *ngFor="let item of orderList;">
+        <div clas="row" *ngFor="let item of orderList;" [hidden]="gridView == false">
             <div class="order-card mb-3 py-1 pointerCursor " *ngIf="item.product != null" (click)="panelExpended = !panelExpended">
                 <div class="course-preview col-lg-1 col-md-1 col-xs-2 ">
                     <i class="fas fa-list"></i>
@@ -53,21 +40,25 @@
                 </div>
                 <div class="orderid col-lg-3 col-md-3 d-lg-block d-none">
                     <span class="fs-subtitle">
-            {{item.firstname}} {{item.lastname}}</span>
+                        {{item.firstname}} {{item.lastname}}</span>
                 </div>
             </div>
             <div class="row" [hidden]="panelExpended" *ngIf="item.product != null">
                 <div class="col-12">
                     <div class="order-detail mb-3 py-1">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 col-sm-6">
                             <div class="py-3 text-center">
                                 <span class="text-black-600 d-block">รายละเอียดออเดอร์ #{{item.orderNo}}</span>
-                            </div>
-                            <div class="text-left mb-3">
-                                <span class="fs-subtitle text-black-800 d-block">ชื่อลูกค้า : {{item.firstname}} {{item.lastname}}</span>
-                                <span class="fs-subtitle text-black-800 d-block">เบอร์ติดต่อ : {{item.phone}}</span>
-                                <span class="fs-subtitle text-black-800 d-block">สถานที่จัดส่ง : {{item.address}}</span>
-                                <span class="fs-subtitle text-black-800 d-block">วันที่สั่งซื้อ : {{item.orderdate | date:'medium'}}</span>
+                                <div class="text-left mb-3 mt-3 d-block d-lg-none">
+                                    <span class="fs-subtitle2 text-black-800 d-block">ชื่อลูกค้า : {{item.firstname}}
+                                        {{item.lastname}}</span>
+                                    <span class="fs-subtitle2 text-black-800 d-block">เบอร์ติดต่อ :
+                                        {{item.phone}}</span>
+                                    <span class="fs-subtitle2 text-black-800 d-block">สถานที่จัดส่ง :
+                                        {{item.address}}</span>
+                                    <span class="fs-subtitle2 text-black-800 d-block">วันที่สั่งซื้อ : {{item.orderdate
+                                        | date:'medium'}}</span>
+                                </div>
                             </div>
                             <!-- Shopping cart table -->
                             <table class="table bg-white rounded shadow-sm mb-2">
@@ -91,14 +82,16 @@
                                     <tr *ngFor="let p of item.product ">
                                         <th class="border-0 align-middle"><span class="fs-subtitle ml-3">{{p.productsName}}</span></th>
                                         <th class="border-0 align-middle"><span class="fs-subtitle">{{p.quantity}}</span></th>
-                                        <th class="border-0 align-middle"><span class="fs-subtitle">{{p.total | currency:"THB"}}</span></th>
+                                        <th class="border-0 align-middle"><span class="fs-subtitle">{{p.total |
+                                                currency:"THB"}}</span></th>
                                         <th class="border-0 align-middle"><span class="fs-subtitle">แก้ไข</span></th>
                                     </tr>
                                     <tr>
                                         <td colspan="4">
-                                            <span class="fs-subtitle ml-3" *ngIf="item.product != null">ยอดรวม : <p class="fs-subtitle text-danger d-inline-block" >
-                             {{getTotal(item.product) | currency:'THB'}}
-                          </p></span>
+                                            <span class="fs-subtitle ml-3" *ngIf="item.product != null">ยอดรวม : <p
+                                                    class="fs-subtitle text-danger d-inline-block">
+                                                    {{getTotal(item.product) | currency:'THB'}}
+                                                </p></span>
                                             <button href="#orderDetail" data-toggle="modal" (click)="onEditModal(item)" class="btn float-right m-auto">แจ้งปรับสถานะการชำระเงิน</button>
                                         </td>
 
@@ -110,7 +103,126 @@
                             </div>
                             <!-- End -->
                         </div>
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="text-left mb-3 mt-3">
+                                <span class="fs-subtitle2 text-black-800 d-block">ชื่อลูกค้า : {{item.firstname}}
+                                    {{item.lastname}}</span>
+                                <span class="fs-subtitle2 text-black-800 d-block">เบอร์ติดต่อ : {{item.phone}}</span>
+                                <span class="fs-subtitle2 text-black-800 d-block">สถานที่จัดส่ง :
+                                    {{item.address}}</span>
+                                <span class="fs-subtitle2 text-black-800 d-block">วันที่สั่งซื้อ : {{item.orderdate |
+                                    date:'medium'}}</span>
+                            </div>
+
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body rounded bg-white mx-auto mt-5 table-responsive" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;" [hidden]="gridView">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table bg-white border-0 rounded shadow-sm mb-2">
+                <thead>
+                    <tr class="border-bottom">
+                        <th class="border-0 bg-white" style="padding:20px">รหัสออเดอร์</th>
+                        <th class="border-0 bg-white" style="padding:20px">ผู้สั่งซื้อ</th>
+                        <th class="border-0 bg-white" style="padding:20px">วันที่สั่งซื้อ</th>
+                        <th class="border-0 bg-white" style="padding:20px">สถานะ</th>
+                        <th class="border-0 bg-white" style="padding:20px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of orderList" [hidden]="order.product == null">
+                        <td class="border-0 align-middle" style="padding:20px">{{ order.orderNo }}</td>
+                        <td class="border-0 align-middle" style="padding:20px">{{ order.firstname }} {{order.lastname}}</td>
+                        <td class="border-0 align-middle" style="padding:20px">{{ order.orderdate | date:'medium' }}</td>
+                        <td class="border-0 align-middle" style="padding:20px">{{ order.orderStatus }}</td>
+                        <td class="border-0 align-middle" style="padding:20px"><button class="btn" (click)="show(order)">
+                            ดูรายละเอียด
+                        </button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="order-detail mb-3 py-1">
+                                <div class="col-lg-12 col-sm-12">
+                                    <div class="py-3 text-center">
+                                        <span class="text-black-600 d-block">รายละเอียดออเดอร์ #{{productDetail.orderNo}}</span>
+                                        <div class="text-left mb-3 mt-3 d-block d-lg-none">
+                                            <span class="fs-subtitle2 text-black-800 d-block">ชื่อลูกค้า : {{productDetail.firstname}}
+                                                {{productDetail.lastname}}</span>
+                                            <span class="fs-subtitle2 text-black-800 d-block">เบอร์ติดต่อ :
+                                                {{productDetail.phone}}</span>
+                                            <span class="fs-subtitle2 text-black-800 d-block">สถานที่จัดส่ง :
+                                                {{productDetail.address}}</span>
+                                            <span class="fs-subtitle2 text-black-800 d-block">วันที่สั่งซื้อ : {{productDetail.orderdate
+                                                | date:'medium'}}</span>
+                                        </div>
+                                    </div>
+                                    <!-- Shopping cart table -->
+                                    <table class="table bg-white rounded shadow-sm mb-2">
+                                        <thead>
+                                            <tr class="border-bottom">
+                                                <th scope="col" class="border-0 bg-white">
+                                                    <div class="fs-subtitle ml-3">รายการสินค้า</div>
+                                                </th>
+                                                <th scope="col" class="border-0 bg-white">
+                                                    <div class="fs-subtitle">จำนวน</div>
+                                                </th>
+                                                <th scope="col" class="border-0 bg-white">
+                                                    <div class="fs-subtitle">ราคา</div>
+                                                </th>
+                                                <th scope="col" class="border-0 bg-white">
+                                                    <div class="fs-subtitle"></div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let p of productDetail.product ">
+                                                <th class="border-0 align-middle"><span class="fs-subtitle ml-3">{{p.productsName}}</span></th>
+                                                <th class="border-0 align-middle"><span class="fs-subtitle">{{p.quantity}}</span></th>
+                                                <th class="border-0 align-middle"><span class="fs-subtitle">{{p.total |
+                                                        currency:"THB"}}</span></th>
+                                                <th class="border-0 align-middle"><span class="fs-subtitle">แก้ไข</span></th>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">
+                                                    <span class="fs-subtitle ml-3" *ngIf="productDetail.product != null">ยอดรวม : <p
+                                                            class="fs-subtitle text-danger d-inline-block">
+                                                            {{getTotal(productDetail.product) | currency:'THB'}}
+                                                        </p></span>
+                                                    <button href="#orderDetail" data-toggle="modal" (click)="onEditModal(productDetail)" class="btn float-right m-auto">แจ้งปรับสถานะการชำระเงิน</button>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="text-left mb-3 mt-3 p-3">
+                                        <span class="fs-subtitle2 text-black-800 d-block">ชื่อลูกค้า : {{productDetail.firstname}}
+                                            {{productDetail.lastname}}</span>
+                                        <span class="fs-subtitle2 text-black-800 d-block">เบอร์ติดต่อ : {{productDetail.phone}}</span>
+                                        <span class="fs-subtitle2 text-black-800 d-block">สถานที่จัดส่ง :
+                                            {{productDetail.address}}</span>
+                                        <span class="fs-subtitle2 text-black-800 d-block">วันที่สั่งซื้อ : {{productDetail.orderdate |
+                                            date:'medium'}}</span>
+                                    </div>
+                                    <!-- End -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="close mr-2 mt-2" data-dismiss="modal" (click)="hide()">&times;</button>
                 </div>
             </div>
         </div>

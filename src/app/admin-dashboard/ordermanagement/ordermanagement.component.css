@@ -51,6 +51,14 @@
     margin-bottom: 0px;
 }
 
+.fs-subtitle2 {
+    font-weight: normal;
+    font-size: 14px;
+    color: rgb(65, 61, 61);
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+
 .orderid {
     text-align: left;
     margin: auto 0px auto 20px;
@@ -94,6 +102,16 @@
     transition: all .3s ease-in;
     border-color: rgb(128, 252, 241);
     border-radius: 23px;
+}
+
+.p-btn {
+    text-align: center;
+    font-size: 15px;
+    padding: 5px 25px;
+    color: #43484D;
+    font-weight: 300;
+    transition: all .3s ease-in;
+    border-color: rgb(128, 252, 241);
 }
 
 .btn:focus {

@@ -11,7 +11,8 @@ body {
 }
 
 .modal .modal-dialog {
-    margin: 100px auto;
+    text-align: left;
+    vertical-align: middle;
 }
 
 .main {
@@ -27,11 +28,11 @@ body {
 
 .product-img img {
     float: left;
-    height: 527px;
+    height: 100%;
     overflow: hidden;
     border-radius: 7px 0 0 7px;
     width: 120%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .product-info {
@@ -149,7 +150,7 @@ span {
         font-weight: lighter;
     }
     .product-img {
-        height: 250px;
+        height: auto;
         position: relative;
         display: flex;
         justify-content: center;

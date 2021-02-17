@@ -28,6 +28,7 @@ export class CheckoutComponent implements OnInit {
   checkoutForm: FormGroup;
   orderNo;
   currentDate = new Date();
+  productbyShop : any;
 
 
 
@@ -164,7 +165,20 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-
+  productByshop() {
+    const uuid = Math.floor(100000 + Math.random() * 900000);
+    const newObject = [];
+    this.cartCheckout.forEach(el => {
+      if(Object.keys(newObject).findIndex(el2 => el.shopID == el2) === -1){
+        const newGroup = el.shopID    
+        newObject[newGroup] = [el] 
+      } else {
+        newObject[el.shopID].push(el)
+      }
+    });
+    this.productbyShop = newObject;
+    console.log(this.productbyShop);
+  }
 
   initialLoadUserLogin() {
     this.UserLogin = this.account.UserLogin;
@@ -276,7 +290,7 @@ export class CheckoutComponent implements OnInit {
     );
     localStorage.removeItem('cart');
     //console.log(this.validateFrom.value)
-    this.toastr.success('ชำระเงินสำเร็จ', 'สำเร็จ !');
+    this.toastr.success('คำส่ั่งซื้อของคุณเข้าระบบ', 'สำเร็จ !');
     //setTimeout(location.reload.bind(location), 1000);
     //$('#addCategory').modal('hide');
     //window.location.reload();

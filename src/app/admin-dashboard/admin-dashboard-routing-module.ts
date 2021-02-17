@@ -6,7 +6,10 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardlayoutComponent } from './dashboardlayout/dashboardlayout.component';
+import { DashuserComponent } from './dashuser/dashuser.component';
 import { EditcategoryComponent } from './editcategory/editcategory.component';
+import { EditshopdetailComponent } from './editshopdetail/editshopdetail.component';
+import { EditshopdetailinfoComponent } from './editshopdetailinfo/editshopdetailinfo.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { OrdermanagementComponent } from './ordermanagement/ordermanagement.component';
 import { PaymentsDetailComponent } from './payments-detail/payments-detail.component';
@@ -74,6 +77,30 @@ const routes: Routes = [
     component: DashboardlayoutComponent,
     children: [
       { path: '', component: OrdermanagementComponent },
+    ]
+  },
+
+  {
+    path: 'shop_detail',
+    component: DashboardlayoutComponent,
+    children: [
+      { path: '', component: EditshopdetailComponent },
+    ]
+  },
+
+  {
+    path: 'shop_info/bank/:id',
+    component: DashboardlayoutComponent,
+    children: [
+      { path: '', component: EditshopdetailinfoComponent },
+    ]
+  },
+
+  {
+    path: 'member',
+    component: DashboardlayoutComponent,
+    children: [
+      { path: '', component: DashuserComponent },
     ]
   },
 

@@ -7,9 +7,11 @@ import { CrudService } from 'src/app/components/services/crud.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import * as _ from 'lodash'; 
 
 registerLocaleData(th);
 declare const $: any;
+
 
 @Component({
   selector: 'app-user-orderdetail',
@@ -52,13 +54,16 @@ export class UserOrderdetailComponent implements OnInit {
     ],
   }
 
+  uniqueTeams : any;
+
   constructor(private CrudService: CrudService, private toastr: ToastrService, private fb: FormBuilder, private http: HttpClient) {
     this.orderModel = this.CrudService.updateOrder;  
+    
   }
 
   ngOnInit(): void {
 
-
+    // this.orderModel.product = _.uniqBy(this.orderModel.product, 'shopID');
     console.log(this.orderModel);
     this.genPaymentID();
     this.calTotal();
@@ -68,15 +73,30 @@ export class UserOrderdetailComponent implements OnInit {
       }
     );
 
+    // this.uniqueTeams คือเอา ShopID จาก orderModel.product มา MAP ใหม่ ส่วนบรรทัด 80-89 คือทำ uniqID โดยการลบชื่อซ้ำออก
+    this.uniqueTeams = Array.from(new Set(this.orderModel.product.map(team => ({name: team.shopname , id: team.shopID} ))));
+    // this.uniqueTeams = Array.from(new Set(this.orderModel.product.map(team => team.shopname)));
+    let shopID = [];
+    this.uniqueTeams.forEach((el) => {
+      if (isNotExist(el)){
+        shopID.push(el)
+      }
+      function isNotExist(obj){
+        return shopID.every(el => JSON.stringify(el) !== JSON.stringify(obj) )
+      }
+    })
+    this.uniqueTeams = shopID;
+    console.log(this.uniqueTeams)
+    
 
     this.validateFrom = this.fb.group({
       payment_id:[this.paymentID],
       order_id:['', Validators.required],
-      order_status: ['ชำระเงินแล้ว', Validators.required],
+      order_status: ['รอตรวจสอบ'],
       pay_money: ['' ,Validators.required],
       pay_date: ['' , Validators.required],
       shopID: ['' ,Validators.required],
-      detail: ['', Validators.required]
+      detail: ['']
     });
   }
 
@@ -96,7 +116,7 @@ export class UserOrderdetailComponent implements OnInit {
     // sum = total.reduce((acc, {total}) => acc += +(total || 0), 0 );
     // this.productTotal = sum;
   
-    this.validateFrom.patchValue({shopID: this.orderModel.product[0].shopID , order_id: this.orderModel.product[0].orderNo})
+    this.validateFrom.patchValue({order_id: this.orderModel.product[0].orderNo})
     
   }
  
@@ -139,7 +159,6 @@ export class UserOrderdetailComponent implements OnInit {
 
   async onSubmit() {
      this.validateFrom.patchValue({order_id: this.orderModel.orderNo })
-     console.log(this.validateFrom.value);
     if (this.validateFrom.invalid) {
       await this.toastr.error('กรุณากรอกข้อมูลที่ต้องการแก้ไข', 'เกิดข้อผิดพลาด !');
     }
@@ -148,7 +167,7 @@ export class UserOrderdetailComponent implements OnInit {
       await this.CrudService.postPayment(this.validateFrom.value).subscribe(
       );
       await this.toastr.success('การดำเนินการเรียบร้อย', 'สำเร็จ !');
-      setTimeout(location.reload.bind(location), 1000);
+      // setTimeout(location.reload.bind(location), 1000);
     console.log(this.validateFrom.value);
     }
   }

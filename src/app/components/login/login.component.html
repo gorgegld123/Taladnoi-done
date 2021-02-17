@@ -1,19 +1,19 @@
-<div class="col-lg-12 mx-auto top" style="font-family: 'Prompt', sans-serif; background-color: #ffffff ;">
+<div class="col-lg-12 mx-auto top" style="font-family: 'Kanit', sans-serif;">
     <div class="wrapper fadeInDown">
         <div id="formContent">
             <!-- Tabs Titles -->
 
             <!-- Icon -->
-            <div class="fadeIn first">
+            <div class="fadeIn first my-3">
                 <!-- <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" /> -->
-                <h1>เข้าสู่ระบบ</h1>
+                <h4>เข้าสู่ระบบ</h4>
             </div>
 
             <!-- Login Form -->
             <form class="formregister" [formGroup]="form" (submit)="onSubmit()">
-                <input type="text" id="username" class="fadeIn second" formControlName="username" placeholder="username">
-                <input type="text" id="password" class="fadeIn third" formControlName="password" placeholder="password">
-                <br><br><input type="submit" class="fadeIn fourth" value="Log In">
+                <input type="text" id="username" class="fadeIn second" formControlName="username" placeholder="ชื่อผู้ใช้งาน">
+                <input type="password" id="password" class="fadeIn third" formControlName="password" placeholder="รหัสผ่าน">
+                <br><br><input type="submit" class="fadeIn fourth" value="เข้าสู่ระบบ">
             </form>
 
             <!-- Remind Passowrd -->

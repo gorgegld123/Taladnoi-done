@@ -1,0 +1,39 @@
+<div class="card-body bg-white px-3 py-3">
+    <div class="row">
+        <div class="col-sm-12 col-lg-10">
+            <span class="h5">
+                <i class="fas fa-user pt-2 mr-3"></i>รายชื่อสมาชิก <span class="badge badge-danger text-white">User</span></span>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-10 card-header rounded bg-white mx-auto mt-5" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+        <div class="tile">
+            <div class="card-body">
+                <table datatable [dtOptions]="dtOptions2" [dtTrigger]="dtTrigger2" class="row-border hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>ชื่อ - นามสกุล</th>
+                            <th>ตำแหน่ง</th>
+                            <th>แก้ไขข้อมุล</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let person of items">
+                            <td>{{ person.userID }}</td>
+                            <td>{{ person.username }}</td>
+                            <td>{{ person.firstname }} {{ person.lastname }}</td>
+                            <td>{{ person.position }}</td>
+                            <td><i href="#editUser" data-toggle="modal" class="fas fa-edit mx-auto" (click)="onEditModal(person)"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-dashuserid></app-dashuserid>

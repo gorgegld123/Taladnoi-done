@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../services/crud.service';
-
+import { NgxSpinnerService } from "ngx-spinner";
 declare const $: any;
 
 @Component({
@@ -83,10 +83,15 @@ export class HomeComponent implements OnInit {
   storeDataGet: any = [];
 
   constructor(private CrudService: CrudService
-  ) { }
+  ,private spinner:NgxSpinnerService) { }
 
   ngOnInit() {
-
+    this.spinner.show();
+ 
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 1500);
     
     let cartDataNull = localStorage.getItem('cart');
     if (cartDataNull == null) {

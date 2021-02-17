@@ -1,0 +1,44 @@
+.logo_show {
+    display: block;
+    position: relative;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    margin: -100px 0px 0px 5px;
+    z-index: 999;
+    border: 3px solid #ffffff !important;
+    border-radius: 15px;
+}
+
+.img-wallpaper {
+    max-width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+.gg-list {
+    --ggs: 0.8;
+    top: 5px;
+    display: inline-block;
+}
+
+.gg-info {
+    --ggs: 0.8;
+    top: 5px;
+    display: inline-block;
+}
+
+.img-fluid {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.msg {
+    text-align: center;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.6rem;
+    position: absolute;
+    left: 16%;
+    top: 45%;
+    width: 75%;
+}

@@ -4,8 +4,45 @@ body {
     height: 710px
 }
 
+.gg-list {
+    --ggs: 0.8;
+    top: 5px;
+    display: inline-block;
+}
+
+.gg-info {
+    --ggs: 0.8;
+    top: 5px;
+    display: inline-block;
+}
+
+.logo_show {
+    display: block;
+    position: relative;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    margin: -100px 0px 0px 5px;
+    z-index: 999;
+    border: 3px solid #ffffff !important;
+    border-radius: 15px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
 .results {
     font-weight: 600
+}
+
+.shopheader img {
+    background-color: #ffffff;
+    object-fit: cover;
+    width: 200px;
+    height: 220px;
 }
 
 select {
@@ -27,7 +64,7 @@ select {
     box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.10);
 }
 
-img {
+.card img {
     background-color: #ffffff;
     object-fit: contain;
     width: 240px;
@@ -116,11 +153,33 @@ div.text-muted {
     .results {
         font-size: 0.9rem
     }
+    .logo_show {
+        display: block;
+        position: relative;
+        object-fit: cover;
+        width: 100px;
+        height: 100px;
+        margin: -70px 0px 0px 5px;
+        z-index: 999;
+        border: 3px solid #ffffff !important;
+        border-radius: 15px;
+    }
 }
 
 @media(max-width:330px) {
     .results {
         font-size: 0.85rem
+    }
+    .logo_show {
+        display: block;
+        position: relative;
+        object-fit: cover;
+        width: 100px;
+        height: 100px;
+        margin: -70px 0px 0px 5px;
+        z-index: 999;
+        border: 3px solid #ffffff !important;
+        border-radius: 15px;
     }
 }
 
@@ -133,5 +192,16 @@ div.text-muted {
 @media(max-width:768px) {
     body {
         height: 100%
+    }
+    .logo_show {
+        display: block;
+        position: relative;
+        object-fit: cover;
+        width: 100px;
+        height: 100px;
+        margin: -70px 0px 0px 5px;
+        z-index: 999;
+        border: 3px solid #ffffff !important;
+        border-radius: 15px;
     }
 }

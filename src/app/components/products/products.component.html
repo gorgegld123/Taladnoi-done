@@ -1,8 +1,50 @@
+<ngx-spinner bdColor="#111" size="medium" color="#d34d4d" type="ball-pulse" [fullScreen]="true">
+    <p style="font-size: 15px; color: white">กำลังโหลดรายการสินค้า...</p>
+</ngx-spinner>
 <div class="container mt-3" style="font-family: 'Kanit', sans-serif;">
+    <div *ngFor="let shopDetail of shopDetail">
+        <div class="row d-block d-sm-block d-md-block d-xl-block d-lg-block">
+            <div class="col-12">
+                <img src="https://paikondieow.com/wp-content/uploads/2019/02/7.jpg" width="100%" height="350px" class="img-fluid">
+            </div>
+        </div>
+        <div class="d-block d-sm-block d-md-block d-lg-block">
+            <nav class="navbar navbar-light bg-white border-bottom" style="margin-bottom: 10px;">
+                <a class="navbar-brand">
+                    <img src="http://ta-lad-noi.com/taladnoiapi/productImage/{{shopDetail.shop_imageID}}" class="logo_show bg-white">
+                </a>
+                <div class="ml-2 mr-auto d-inline-block">
+                    <span class="text-dark d-inline-block align-middle">{{shopDetail.shop_name}}</span>
+                    <span class="text-muted font-weight-normal font-italic d-block" [innerHTML]="shopDetail.shop_detail"></span>
+                </div>
+                <ul class="navbar-nav mt-2 mt-lg-0 pt-1">
+                    <li class="align-right">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a type="button" class="btn btn-light btn-sm border p-2"><i class="gg-list"></i> รายการสินค้า</a>
+                            <a [routerLink]="['/info/' , shopDetail.shopID]" routerLinkActive="router-link-active" type="button" class="btn btn-light btn-sm border p-2" (click)="shopdetailAssign(shopDetail)">
+                                <i class="gg-info"></i> ข้อมูลร้าน</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- <div class="row d-flex">
+        <div class="col-lg-12 rounded border mb-2">
+            <div class="card-body" *ngFor="let shopDetail of shopDetail">
+                <div class="shopheader p-2">
+                    <img src="http://ta-lad-noi.com/taladnoiapi/productImage/{{shopDetail.shop_imageID}}" alt="" class="img-fluid rounded shadow-sm">
+                    <div class="ml-5 d-inline-block align-middle">
+                        <h5 class="mb-0" class="text-dark d-inline-block align-middle">{{shopDetail.shop_name}}</h5>
+                        <span class="text-muted font-weight-normal font-italic d-block">{{shopDetail.shop_detail}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
     <div class="row d-flex">
         <div class="col-12 title mb-20 text-left">
-            รายการสินค้า
-            <app-breadcrumbs></app-breadcrumbs>
+            <i class="gg-list mr-1"> </i>รายการสินค้า
         </div>
     </div>
     <div class="row">
@@ -15,28 +57,11 @@
         <div class="col-6 justify-content-between results animated zoomIn text-right mt-1">
             <span>ประเภทสินค้า: </span>
             <select [(ngModel)]='categoryFilters' class="dropdown sort-select">
-              <option value="" >ทั้งหมด</option>
-              <option *ngFor="let c of categorie$" value="{{c.name}}" >{{c.name}}</option>
-        
-          </select>
+                <option value="">ทั้งหมด</option>
+                <option *ngFor="let c of categorie$" value="{{c.name}}">{{c.name}}</option>
 
-            <!-- <button class="btn btn-danger" (click)="onSortPrice()">Sort</button> -->
+            </select>
         </div>
-        <!-- <div class="col-lg-3 col-md-6 offset-md-0 offset-sm-1 col-sm-10 offset-sm-1 my-lg-0 my-2 animated fadeInUp" *ngFor ="let p of productFilter" >
-          <div class="card mb-50"> <img class="card-img-top" src="http://localhost/taladnoi/upload/product/{{p.image}}">
-              <div class="card-body">
-                  <div class="d-flex align-items-start justify-content-between">
-                      <div class="d-flex flex-column" >
-                          <span class="h6 font-weight-bold">{{p.pname}}</span>
-                          <span class="text-muted">{{p.price | currency:'THB'}}</span>
-                      </div>
-                      <div class="btn" (click)="addToCart(p)"><span class="fas fa-shopping-cart"></span></div>
-                  </div>
-              </div>
-          </div>
-      </div> -->
-
-        <p></p>
 
         <div class="col-lg-3 col-md-6 offset-md-0 offset-sm-1 col-sm-10 offset-sm-1 my-lg-0 my-2 animated fadeInUp" *ngFor="let p of productFilter |filter:categoryFilters:'cname'">
             <div class="card mb-50">

@@ -206,6 +206,16 @@ background-color: #717fe0 !important;
     font-weight: 400;
 }
 
+.shoptitle {
+    height: auto;
+    border-top: 1px solid #E1E8EE;
+    border-bottom: 1px solid #E1E8EE;
+    padding: 20px 30px;
+    color: #5E6977;
+    font-size: 13px;
+    font-weight: 400;
+}
+
 .item {
     padding: 20px 30px;
     height: auto;
@@ -285,6 +295,7 @@ background-color: #717fe0 !important;
 
 .description span:first-child {
     margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 .description span:last-child {

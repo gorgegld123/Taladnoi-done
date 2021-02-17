@@ -8,6 +8,7 @@ import { CrudService } from '../services/crud.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MessengerService } from '../services/messenger.service';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class ProductsComponent implements OnInit {
   product: any;
   categoryFilters = '';
   SortPrice = 'ซึลกิ';
-
+  shopDetail : any;
 
   prod: any;
   @Input() productDetail: Product[];
@@ -42,16 +43,24 @@ export class ProductsComponent implements OnInit {
   imageDirectoryPath = 'http://ta-lad-noi.com/taladnoiapi/productImage/';
 
   constructor(private CrudService: CrudService, private modalService: NgbModal, private route: ActivatedRoute, private toastr: ToastrService,
-    private msg: MessengerService , private router:Router) { }
-    
+    private msg: MessengerService, private router: Router ,private spinner:NgxSpinnerService) { }
+
 
   ngOnInit() {
+
+    this.spinner.show();
+ 
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 1000);
 
     //this.onSortPrice();
     this.id = +this.route.snapshot.paramMap.get('shopID');
     this.ProductInShop(this.id);
+    this.ShopDetail(this.id);
 
-  
+
 
     this.CrudService.getCategorie().subscribe(
       (categorie) => {
@@ -64,13 +73,13 @@ export class ProductsComponent implements OnInit {
 
   }
 
-  viewDetail (p){
+  viewDetail(p) {
     Object.assign(this.CrudService.productDetail, p);
     console.log(this.CrudService.productDetail)
   }
 
   // Pipes Sort 
-  onSortPrice () {
+  onSortPrice() {
     if (this.SortPrice === 'ซึลกิ') {
       this.SortPrice = 'ไอยู 55';
     } else {
@@ -80,23 +89,35 @@ export class ProductsComponent implements OnInit {
   }
 
 
-  ProductInShop(id){
-  this.CrudService.getProductInshop(id).subscribe(
-    (products) => {
-      //console.log(products);
-      this.product = products;
-      //this.product = Array.of(products);
-      console.log(this.product)
-    }
-  );
-}
+  ProductInShop(id) {
+    this.CrudService.getProductInshop(id).subscribe(
+      (products) => {
+        //console.log(products);
+        this.product = products;
+        //this.product = Array.of(products);
+        console.log(this.product)
+      }
+    );
+  }
+
+
+  ShopDetail(id) {
+    this.CrudService.getShopDetail(id).subscribe(
+      (shop) => {
+        //console.log(products);
+        this.shopDetail = shop;
+        //this.product = Array.of(products);
+        console.log(this.shopDetail)
+      }
+    );
+  }
 
 
   get productFilter() {
     return this.product ?
       this.product.filter((search) =>
         this.searchFilters ?
-        search.pname.toLowerCase().match(this.searchFilters) : search)
+          search.pname.toLowerCase().match(this.searchFilters) : search)
       : this.product;
   }
 
@@ -160,13 +181,13 @@ export class ProductsComponent implements OnInit {
     this.cartItFuc();
   }
 
-  productTotal : number;
-  calTotal (){
+  productTotal: number;
+  calTotal() {
     let sum = 0;
-    for (let i  = 0 ; i < this.itemCart.length; i++) {
-     //console.log(i);
-     sum += this.itemCart[i].total ;
-     
+    for (let i = 0; i < this.itemCart.length; i++) {
+      //console.log(i);
+      sum += this.itemCart[i].total;
+
     }
     this.productTotal = sum;
     this.msg.CartTotal.next(this.productTotal)
@@ -185,6 +206,12 @@ export class ProductsComponent implements OnInit {
     this.cartNumber = cartCount.length;
     this.msg.CartNumber.next(this.cartNumber)
     //console.log(this.cartNumber)
+  }
+
+ 
+  shopdetailAssign(s){
+    Object.assign(this.CrudService.shopInfo, s);
+    console.log(s)
   }
 
   // testMethod() {

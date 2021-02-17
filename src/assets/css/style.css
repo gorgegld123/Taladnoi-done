@@ -8873,9 +8873,9 @@ input:focus {
 /* line 13, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_extend.scss */
 
 .overlay::before {
-    background-image: -moz-linear-gradient(170deg, rgba(34, 34, 34, 0) 0%, black 100%);
-    background-image: -webkit-linear-gradient(170deg, rgba(34, 34, 34, 0) 0%, black 100%);
-    background-image: -ms-linear-gradient(170deg, rgba(34, 34, 34, 0) 0%, black 100%);
+    /* background-image: -moz-linear-gradient(170deg, rgba(34, 34, 34, 0) 0%, black 100%); */
+    /* background-image: -webkit-linear-gradient(170deg, rgba(34, 34, 34, 0) 0%, black 100%); */
+    /* background-image: -ms-linear-gradient(170deg, rgba(34, 34, 34, 0) 0%, black 100%); */
 }
 
 

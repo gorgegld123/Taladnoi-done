@@ -16,6 +16,7 @@ import { DashboardlayoutComponent } from './admin-dashboard/dashboardlayout/dash
 import { ProfileOrderComponent } from './components/profile/profile-order/profile-order.component';
 import { ProfileDetailComponent } from './components/profile/profile-detail/profile-detail.component';
 import { UserOrderdetailComponent } from './components/profile/profile-order/user-orderdetail/user-orderdetail.component';
+import { ShopinfoComponent } from './components/products/shopinfo/shopinfo.component';
 
 
 
@@ -64,6 +65,9 @@ const routes: Routes = [
   path:'register' , component: RegisterPageComponent
 },
 {
+  path:'info/:shopID' , component: ShopinfoComponent
+},
+{
   path:'order' , component: ProfileComponent, children: [{path: '', component: ProfileOrderComponent}]
 },
 
@@ -73,6 +77,7 @@ const routes: Routes = [
 {
   path:'order-detail' , component: ProfileComponent, children: [{path:'', component:UserOrderdetailComponent}]
 },
+
 
 
 { path : 'auth' , loadChildren: () => import('./admin-dashboard/admindashboard.module').then(m => m.AdminDashboardModule) ,canActivate: [AuthenticationGuard]}

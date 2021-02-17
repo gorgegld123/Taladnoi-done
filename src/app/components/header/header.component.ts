@@ -55,18 +55,18 @@ export class HeaderComponent implements OnInit {
         //console.log(products);
         this.Shoplist = shoplist;
         //this.product = Array.of(products);
-        console.log(this.Shoplist)
       }
     );
     //console.log(this.cartItems)
   }
 
   showLoader(){
-    setTimeout(location.reload.bind(location));
+    setTimeout(location.reload.bind(location), 500);
   }
   
   onLogout() {
     this.authen.clearAuthenticated();
+    localStorage.removeItem('cart');
     setTimeout(location.reload.bind(location), 500);
     console.log(this.UserLogin)
   }
@@ -142,7 +142,6 @@ export class HeaderComponent implements OnInit {
         .getUserLogin(this.authen.getAuthenticated())
         .then(userLogin => this.UserLogin = userLogin )
         .catch();     
-    console.log(this.UserLogin)
   }
 
 }

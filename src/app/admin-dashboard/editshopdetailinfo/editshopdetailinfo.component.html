@@ -1,0 +1,146 @@
+<div class="container mt-3" style="font-family: 'Kanit', sans-serif;">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex flex-row align-items-center back" (click)="back()"><i class="gg-arrow-long-left"></i>
+                <h6>ย้อนกลับ</h6>
+            </div>
+        </div>
+        <div class="bg-white" style="padding:20px;">
+            <div class="row">
+                <div class="col-7 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <h5>
+                        <i class="gg-credit-card mr-1"></i>ปรับแต่งรายละเอียดการชำระเงิน
+                    </h5>
+                </div>
+                <!-- <div class="col-6 text-right"><i class="fa fa-clock-o text-lightgray"></i>&nbsp;ปรับปรุงล่าสุด 26/03/2563</div> -->
+                <div class="col-5 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-right  d-none d-sm-none d-md-block d-lg-block d-xl-block">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="bg-white" style="padding:20px;">
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="h6 text-dark"><i class="fa fa-university"></i> โอนเงินผ่านบัญชีธนาคาร
+                                    </span>
+
+                                </div>
+                                <div class="col-6 text-right">
+                                    <a class="btn btn-danger text-white" data-toggle="modal" data-target="#staticBackdrop">
+                                        <i class="fa fa-plus"></i><span class="d-none d-lg-inline-block">เพิ่มบัญชีธนาคาร</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <div class="h5 modal-title" id="staticBackdropLabel">
+                                                เพิ่มธนาคารที่รับชำระเงิน</div>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" [formGroup]="validateFrom">
+                                            <div class="form-group row">
+                                                <label for="staticEmail" class="col-sm-4 col-form-label">ธนาคาร</label>
+                                                <div class="col-sm-8">
+                                                    <select nice-select id='bankID' name='bankID' formControlName="bankID" [ngClass]="{'is-invalid':validateFrom.get('bankID').touched && validateFrom.get('bankID').invalid}">
+                                                        <option value="">-- โปรดเลือกธนาคาร --</option>
+                                                        <option *ngFor="let c of bankName" value="{{c.id}}">
+                                                            {{c.nameThai}}
+                                                        </option>
+                                                    </select>
+                                                    <div class="invalid-feedback">โปรดเลือกธนาคาร</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="staticEmail" class="col-sm-4 col-form-label">ประเภท</label>
+                                                <div class="col-sm-8">
+                                                    <select nice-select id='accType' name='accType' formControlName="accType" [ngClass]="{'is-invalid':validateFrom.get('accType').touched && validateFrom.get('accType').invalid}">
+                                                        <option value="">-- โปรดเลือกประเภทบัญชี --</option>
+                                                        <option value="ออมทรัพย์">
+                                                            ออมทรัพย์
+                                                        </option>
+                                                        <option value="กระแสรายวัน">
+                                                            กระแสรายวัน
+                                                        </option>
+                                                        <option value="เงินฝากประจำ">
+                                                            เงินฝากประจำ
+                                                        </option>
+                                                    </select>
+                                                    <div class="invalid-feedback">โปรดเลือกประเภท</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="staticEmail" class="col-sm-4 col-form-label">เลขบัญชี</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="bank_number" class="form-control" formControlName="accNumber" [ngClass]="{'is-invalid':validateFrom.get('accNumber').touched && validateFrom.get('accNumber').invalid}" maxlength="10">
+                                                    <div class="invalid-feedback">โปรดกรอกเลขบัญชี</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="inputPassword" class="col-sm-4 col-form-label">ชื่อเจ้าของบัญชี</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="bank_owner" class="form-control" formControlName="accName" [ngClass]="{'is-invalid':validateFrom.get('accName').touched && validateFrom.get('accName').invalid}" maxlength="30">
+                                                    <div class="invalid-feedback">โปรดกรอกชื่อบัญชี</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="inputPassword" class="col-sm-4 col-form-label">สาขา</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="bank_owner" class="form-control" formControlName="accBranch" [ngClass]="{'is-invalid':validateFrom.get('accBranch').touched && validateFrom.get('accBranch').invalid}" maxlength="20">
+                                                    <div class="invalid-feedback">โปรดกรอกสาขา</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                            <button type="submit" class="btn btn-primary" (click)="onSubmit()">เพิ่มบัญชีธนาคาร</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3 p-3">
+                                <ul *ngFor="let item of bankInfo">
+                                    <li class="ui-sortable-handle">
+                                        <div class="row border" style="padding-top:5px;padding-bottom:5px;margin-bottom:20px;">
+                                            <div class="col-11 col-sm-5 col-md-5 col-lg-5 col-xl-5 text-center align-items-center">
+                                                <div class="media align-items-center">
+                                                    <i class="fa fa-bars text-black-50"></i>&nbsp;&nbsp;
+                                                    <img src="http://ta-lad-noi.com/taladnoiapi/th/{{item.logo}}" class="img-fluid mx-3" width="60px">
+                                                    <div class="ml-3 media-body text-left">
+                                                        <span class="mt-0"><b>{{item.nicename}}</b></span><br>
+                                                        <span class="text-muted d-block">{{item.nameThai}}</span>
+                                                        <span class="text-muted d-block">{{item.nameEng}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-3 col-md-3 col-lg-3 col-xl-3 text-center align-self-center p-0">
+                                                <span class="span-weight-bold h6" style="letter-spacing:1px;">
+                                                    {{item.accNumber}} </span><br>
+                                                <span class="text-black-50">{{item.accName}}</span>
+                                            </div>
+
+                                            <div class="col-5 col-sm-3 col-md-3 col-lg-3 col-xl-3 text-left align-self-center p-0 text-black-50">
+                                                <span class="text-black-50"></span>{{item.accType}} <br>
+                                                <span class="text-black-50">สาขา </span>{{item.accBranch}}
+                                            </div>
+                                            <div class="col-1 text-center p-0 pt-2">
+                                                <a (click)="del(item)" class="btn btn-danger btn-sm text-white">
+                                                    <i class="gg-trash"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

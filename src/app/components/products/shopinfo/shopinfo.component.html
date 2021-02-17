@@ -1,0 +1,131 @@
+<app-header></app-header>
+
+<div class="container mt-3" style="font-family: 'Kanit', sans-serif;">
+    <div *ngFor="let shopInfo of shopInfo">
+        <div class="row d-block d-sm-block d-md-block d-xl-block d-lg-block">
+            <div class="col-12">
+                <img src="https://paikondieow.com/wp-content/uploads/2019/02/7.jpg" width="100%" height="350px" class="img-wallpaper">
+            </div>
+        </div>
+        <div class="d-block d-sm-block d-md-block d-lg-block">
+            <nav class="navbar navbar-light bg-white border-bottom" style="margin-bottom: 10px;">
+                <a class="navbar-brand">
+                    <img src="http://ta-lad-noi.com/taladnoiapi/productImage/{{shopInfo.shop_imageID}}" class="logo_show bg-white">
+                </a>
+                <div class="ml-2 mr-auto d-inline-block">
+                    <span class="text-dark d-inline-block align-middle">{{shopInfo.shop_name}}</span>
+                    <span class="text-muted span-weight-normal span-italic d-block" [innerHTML]="shopInfo.shop_detail"></span>
+                </div>
+                <ul class="navbar-nav mt-2 mt-lg-0 pt-1">
+                    <li class="align-right">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a [routerLink]="['/products/shop' , shopInfo.shopID]" routerLinkActive="router-link-active" type="button" class="btn btn-light btn-sm border p-2"><i class="gg-list"></i>
+                                รายการสินค้า</a>
+                            <a [routerLink]="['/info/' , shopInfo.shopID]" routerLinkActive="router-link-active" type="button" class="btn btn-light btn-sm border p-2">
+                                <i class="gg-info"></i> ข้อมูลร้าน</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div *ngFor="let shopInfo of shopInfo">
+        <div class="bg-white" style="padding:20px;">
+            <div class="row">
+                <div class="col-7 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <h5>
+                        <span class="h6 text-dark"><i class="fa fa-university"></i> โอนเงินผ่านบัญชีธนาคาร
+                        </span>
+                    </h5>
+                </div>
+                <!-- <div class="col-6 text-right"><i class="fa fa-clock-o text-lightgray"></i>&nbsp;ปรับปรุงล่าสุด 26/03/2563</div> -->
+                <div class="col-5 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-right  d-none d-sm-none d-md-block d-lg-block d-xl-block">
+                    <svg class="bi bi-clock" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z">
+                        </path>
+                        <path fill-rule="evenodd"
+                            d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-12 col-md-8 border-right">
+                    <div *ngIf="bankInfo.length === 0">
+                        <div class="text-center mt-5">
+                            <span class="h4 text-danger m-auto p-auto">ร้านค้านี้ยังไม่ตั้งค่าบัญชีสำหรับการโอนเงิน</span>
+                        </div>
+                    </div>
+                    <div class="mt-3 p-3">
+                        <ul *ngFor="let item of bankInfo">
+                            <li class="ui-sortable-handle">
+                                <div class="row border" style="padding-top:5px;padding-bottom:5px;margin-bottom:20px;">
+                                    <div class="col-11 col-sm-5 col-md-5 col-lg-5 col-xl-5 text-center align-items-center">
+                                        <div class="media align-items-center">
+                                            <i class="fa fa-bars text-black-50"></i>&nbsp;&nbsp;
+                                            <img src="http://ta-lad-noi.com/taladnoiapi/th/{{item.logo}}" class="img-fluid mx-3" width="60px">
+                                            <div class="ml-3 media-body text-left">
+                                                <span class="mt-0"><b>{{item.nicename}}</b></span><br>
+                                                <span class="text-muted d-block">{{item.nameThai}}</span>
+                                                <span class="text-muted d-block">{{item.nameEng}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-3 col-md-3 col-lg-3 col-xl-3 text-center align-self-center p-0">
+                                        <span class="span-weight-bold h6" style="letter-spacing:1px;">
+                                            {{item.accNumber}} </span><br>
+                                        <span class="text-black-50">{{item.accName}}</span>
+                                    </div>
+
+                                    <div class="col-5 col-sm-3 col-md-3 col-lg-3 col-xl-3 text-left align-self-center p-0 text-black-50">
+                                        <span class="text-black-50"></span>{{item.accType}} <br>
+                                        <span class="text-black-50">สาขา </span>{{item.accBranch}}
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-left">
+                    <h6>ข้อมูลร้าน</h6>
+                    <svg class="bi bi-clock-history" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z">
+                        </path>
+                        <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z">
+                        </path>
+                        <path fill-rule="evenodd"
+                            d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z">
+                        </path>
+                    </svg>&nbsp;
+
+                    <br>
+                    <hr>
+                    <h6>แผนที่ร้าน</h6>
+                    <iframe _ngcontent-lbv-c50="" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18823.442903995205!2d100.51129076710721!3d13.736305377717743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e298d8adfbe1cd%3A0x40100b25de28af0!2z4LmB4LiC4Lin4LiHIOC4leC4peC4suC4lOC4meC5ieC4reC4oiDguYDguILguJXguKrguLHguKHguJ7guLHguJnguJjguKfguIfguKjguYwg4LiB4Lij4Li44LiH4LmA4LiX4Lie4Lih4Lir4Liy4LiZ4LiE4Lij!5e0!3m2!1sth!2sth!4v1602254542289!5m2!1sth!2sth"
+                        width="100%" height="300" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0" style="border: 0;"></iframe>
+                    <br>
+                    <hr>
+                    <h6>ที่อยู่ร้านค้า</h6>
+                    {{shopInfo.shop_address}}
+                    <hr>
+                    <h6>ติดต่อ </h6>
+                    <p class="d-block">
+                        <span class="span-weight-normal d-block h6" style="line-height: 25px;">
+                            <i class="fab fa-facebook-messenger mr-1"></i> Facebook Msg : {{shopInfo.shop_msg}}<br>
+                            Line : {{shopInfo.shop_line}} <br>
+                            เบอร์โทรศัพท์ : {{shopInfo.shop_phone}} <br>
+                            <a href="" class="text-primary"></a>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

@@ -25,6 +25,10 @@ import { SumPipe } from './ordermanagement/order-detail/sum.pipe';
 import { PaymentsDetailComponent } from './payments-detail/payments-detail.component';
 import { DataTablesModule } from "angular-datatables";
 import { LightboxModule } from 'ngx-lightbox';
+import { EditshopdetailComponent } from './editshopdetail/editshopdetail.component';
+import { EditshopdetailinfoComponent } from './editshopdetailinfo/editshopdetailinfo.component';
+import { DashuserComponent } from './dashuser/dashuser.component';
+import { DashuseridComponent } from './dashuser/dashuserid/dashuserid.component';
 
 
 
@@ -64,6 +68,10 @@ import { LightboxModule } from 'ngx-lightbox';
     OrderDetailComponent,
     SumPipe,
     PaymentsDetailComponent,
+    EditshopdetailComponent,
+    EditshopdetailinfoComponent,
+    DashuserComponent,
+    DashuseridComponent,
     
   ]
 })

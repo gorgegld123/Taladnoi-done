@@ -20,6 +20,8 @@
                     <img class="card-img-top" src="http://ta-lad-noi.com/taladnoiapi/productImage/{{p.image}}" (click)="show(p)">
                     <div class="card-body">
                         <h6 class="m-0 fs-subtitle">รหัสชำระเงิน : {{p.id}}</h6>
+                        <h6 class="m-0 fs-subtitle">ผู้สั่งซื้อ : {{p.fullname}}</h6>
+                        <h6 class="m-0 fs-subtitle">เบอร์โทรศัพท์ : {{p.phone}}</h6>
                         <h6 class="m-0 fs-subtitle">รหัสออเดอร์ : {{p.order_id}}</h6>
                         <hr>
                         <h6 class="m-0 fs-subtitle">รายละเอียดการชำระเงิน</h6>
@@ -39,7 +41,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
-                <img src="http://ta-lad-noi.com/taladnoiapi/productImage/{{productDetail.image}}" id="imagepreview">
+                <img src="http://ta-lad-noi.com/taladnoiapi/productImage/{{productDetail.image}}" id="imagepreview" width="100%" height="750px">
             </div>
             <div class="modal-footer">
                 <button type="button" class="close mr-2 mt-2" data-dismiss="modal" (click)="hide()">&times;</button>

@@ -25,7 +25,7 @@ export class AccountService {
     this.UserLogin.position = userLogin.position;
     this.UserLogin.created = userLogin.created;
     this.UserLogin.update = userLogin.update;
-    this.UserLogin.shopID = userLogin.userID;
+    this.UserLogin.shopID = userLogin.shopID;
     return this.UserLogin;
   }
 

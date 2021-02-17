@@ -35,6 +35,11 @@ import { ProfileSidebarComponent } from './components/profile/profile-sidebar/pr
 import { ProfileOrderComponent } from './components/profile/profile-order/profile-order.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { UserOrderdetailComponent } from './components/profile/profile-order/user-orderdetail/user-orderdetail.component';
+import { RemovePipe } from './Pipes/remove-pipe.pipe';
+import { ShopinfoComponent } from './components/products/shopinfo/shopinfo.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+// Import library module
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
@@ -61,6 +66,8 @@ import { UserOrderdetailComponent } from './components/profile/profile-order/use
     ProfileSidebarComponent,
     ProfileOrderComponent,
     UserOrderdetailComponent,
+    RemovePipe,
+    ShopinfoComponent,
 
   ],
   imports: [
@@ -77,9 +84,10 @@ import { UserOrderdetailComponent } from './components/profile/profile-order/use
     NiceSelectModule,
     SharedsModule,
     PipeexportModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    NgxSpinnerModule
   ],
-
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -5,6 +5,8 @@ import { Product } from 'src/app/components/products/shared/product.model';
 import { CrudService } from 'src/app/components/services/crud.service';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { HttpClient, HttpEventType } from '@angular/common/http';
+import { AccountService } from 'src/app/components/services/account.service';
+import { AuthenService } from 'src/app/components/services/loginservice/authen.service';
 
 
 @Component({
@@ -30,13 +32,15 @@ export class AddProductComponent implements OnInit {
 
   categorie: any[];
 
-  constructor(private CrudService: CrudService, private route: Router, private toastr: ToastrService, private fb: FormBuilder, private http: HttpClient) {
+  constructor(private CrudService: CrudService, private route: Router, private toastr: ToastrService, private fb: FormBuilder, private http: HttpClient,
+    private account:AccountService , private authen:AuthenService) {
     this.validateFrom = fb.group({
       pname: ['', Validators.required],
       price: ['', Validators.required],
       stock: ['', Validators.required],
       cname: ['', Validators.required],
       detail: ['', Validators.required],
+      shopID: [null],
       image: ['']
     });
 
@@ -49,6 +53,19 @@ export class AddProductComponent implements OnInit {
         this.categorie = categories;
       }
     );
+    this.initialLoadUserLogin();
+  }
+
+  UserLogin : any;
+  initialLoadUserLogin() {
+    this.UserLogin = this.account.UserLogin;
+    if (this.UserLogin.id) { return; }
+    this.account
+        .getUserLogin(this.authen.getAuthenticated())
+        .then(userLogin => (this.UserLogin = userLogin , this.validateFrom.patchValue(
+          {shopID: userLogin.shopID})))
+        .catch();     
+    console.log(this.UserLogin)
   }
 
   url = '';
@@ -82,7 +99,6 @@ export class AddProductComponent implements OnInit {
   }
 
   onSubmit() {
-
     if (!this.selectedFile) {
       this.toastr.error('กรุณาเพิ่มรูปภาพสินค้า', 'เกิดข้อผิดพลาด !')
     }
@@ -99,8 +115,6 @@ export class AddProductComponent implements OnInit {
       this.validateFrom.reset();
       setTimeout(location.reload.bind(location), 1000);
     }
-    //this.CrudService.postProduct(this.addProductModel).subscribe(
-    //);
   }
 
 }

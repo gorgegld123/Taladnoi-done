@@ -3,11 +3,12 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+        <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
     <!-- Content Row -->
-    <div class="row">
+
+    <div class="row" *ngIf="UserLogin.position == 'แอดมิน'">
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
@@ -59,7 +60,7 @@
         </div>
     </div>
     <!-- Content Row -->
-    <div class="row">
+    <div class="row" *ngIf="UserLogin.position == 'แอดมิน'">
         <!-- Area Chart -->
         <div class="col-xl-8 col-lg-7">
             <div class="card shadow mb-4">
@@ -82,18 +83,17 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area">
-                        <canvas id="myBarChart"></canvas>
+                        <canvas id="payment"></canvas>
                     </div>
                 </div>
             </div>
         </div>
 
 
-
         <!-- Content Row -->
         <!-- <div class="row">
             <!-- Content Column -->
-        <div class="col-lg-10 mb-4">
+        <div class="col-lg-10 mb-4" *ngIf="UserLogin.position == 'แอดมิน'">
             <!-- Project Card Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -104,14 +104,16 @@
                         <thead>
                             <tr>
                                 <th>รหัสออเดอร์</th>
+                                <th>ผู้สั่งซื้อ</th>
                                 <th>วันที่สั่งซื้อ</th>
                                 <th>สถานะ</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let order of orderList">
+                            <tr *ngFor="let order of orderList" [class.hidden]="order.product == null">
                                 <td>{{ order.orderNo }}</td>
+                                <td>{{ order.firstname }} {{order.lastname}}</td>
                                 <td>{{ order.orderdate | date:'medium' }}</td>
                                 <td>{{ order.orderStatus }}</td>
                                 <td><a [routerLink]="['/auth/order']" routerLinkActive="router-link-active">

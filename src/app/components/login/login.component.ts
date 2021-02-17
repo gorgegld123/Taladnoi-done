@@ -6,6 +6,7 @@ import {MessageService} from 'primeng/api';
 import { AccountService } from '../services/account.service';
 import { AuthenService } from '../services/loginservice/authen.service';
 import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements ILoginComponent {
     private router: Router,
     private account: AccountService,
     private authen: AuthenService,
-    private location: Location
+    private location: Location,
+    private toastr:ToastrService
   ) {
     this.initialCreateFormData();
    }
@@ -31,18 +33,19 @@ export class LoginComponent implements ILoginComponent {
   // เข้าสู่ระบบ
   onSubmit(): void {
     if (this.form.invalid)
-      return this.messageService.add({severity: 'warn', summary: 'Warn', detail: 'ข้อมูลบางอย่างผิดพลาด'});
+    this.toastr.error('กรุณากรอกข้อมูล', 'ผิดพลาด !');
+      // return this.messageService.add({severity: 'warn', summary: 'Warn', detail: 'ข้อมูลบางอย่างผิดพลาด'});
 
     this.account.onLogin(this.form.value)
                 .then(res => {
-                  console.log(res);
                   // เก็บ session
                   this.authen.setAuthenticated(res.accessToken);
+                  this.toastr.success('เข้าสู่ระบบสำเร็จ', 'สำเร็จ !');
                   // redirect หน้า page
                   /* this.router.navigate(['/home']); */
                   this.location.back();
                 })
-                .catch(err => this.messageService.add({severity: 'warn', summary: 'Warn', detail: 'ขื่อผู้ใข้หรือรหัสผ่านไม่ถูกต้อง'}));
+                .catch(err => this.toastr.error('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง', 'ผิดพลาด !'));
               }
 
   // สร้างฟอร์ม
